@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :pickups, only: [:new, :create]
   end
-  resources :pickups, only: [:index, :edit, :update, :destroy]
+  resources :pickups, only: [:index, :show, :edit, :update, :destroy]
 end

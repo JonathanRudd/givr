@@ -9,8 +9,11 @@
 require 'faker'
 require 'open-uri'
 
+puts "Destroying all items"
+Item.destroy_all
 puts "Destroying all users"
 User.destroy_all
+
 
 puts "creating Keanu and 5 other users"
 
@@ -32,8 +35,27 @@ User.create!(
   )
 end
 
-# 20.times do
-#   Item.create!(
-#     user_id: user_ids.sample,
-#   )
-# end
+puts "creating Keanus surfboard and 20 other items"
+
+Item.create!(
+  user_id: User.first.id,
+  title: "Surfboard",
+  description: "2nd hand surfboard, still looks great",
+  time: ""
+)
+
+20.times do
+
+  user_ids = User.all.pluck(:id)
+
+  Item.create!(
+    user_id: user_ids.sample,
+    title:  Faker::Appliance.equipment,
+    description: "This is a cool thing, please take it",
+    time: ""
+  )
+end
+
+# file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg')
+# item = Item.new()
+# item.image.attach(io: file, filename: 'nes.png', content_type: 'image/png')

@@ -60,9 +60,17 @@ end
 # item = Item.new()
 # item.image.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
-
 # 10.times do
-#   Pickup.create!(
 
+#  user_ids = User.all.pluck(:id)
+#  item_ids = Item.all.pluck(:id)
+
+#   Pickup.create!(
+#     user_id: user_ids.sample,
+#     item_id: item_ids.sample,
+#     status: "",
+#     note: "Is today ok?",
+#     time:
+#     date:
 #   )
 # end

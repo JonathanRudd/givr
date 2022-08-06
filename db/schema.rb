@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_024013) do
+ActiveRecord::Schema.define(version: 2022_08_06_034105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,9 @@ ActiveRecord::Schema.define(version: 2022_08_06_024013) do
     t.bigint "user_id", null: false
     t.string "title"
     t.text "description"
-    t.integer "time"
-    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
+    t.string "timeframe"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -62,6 +60,8 @@ ActiveRecord::Schema.define(version: 2022_08_06_024013) do
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "time"
+    t.date "date"
     t.index ["item_id"], name: "index_pickups_on_item_id"
     t.index ["user_id"], name: "index_pickups_on_user_id"
   end

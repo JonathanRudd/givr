@@ -41,7 +41,7 @@ Item.create!(
   user_id: User.first.id,
   title: "Surfboard",
   description: "2nd hand surfboard, still looks great",
-  time: ""
+  timeframe: "Whoa, whenever"
 )
 
 20.times do
@@ -50,12 +50,19 @@ Item.create!(
 
   Item.create!(
     user_id: user_ids.sample,
-    title:  Faker::Appliance.equipment,
+    title: Faker::Appliance.equipment,
     description: "This is a cool thing, please take it",
-    time: ""
+    timeframe: "Whenever"
   )
 end
 
 # file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg')
 # item = Item.new()
 # item.image.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+
+# 10.times do
+#   Pickup.create!(
+
+#   )
+# end

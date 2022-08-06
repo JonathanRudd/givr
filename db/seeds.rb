@@ -16,13 +16,19 @@ puts "creating Keanu and 5 other users"
 
 User.create!(
   email: "Keanu@gmail.com",
-  password: "123456"
+  password: "123456",
+  longitude: 40.7411,
+  latitude: 73.9897,
+  address: "Flatiron Building, New York City"
 )
 
 5.times do
   User.create!(
     email: Faker::Internet.email,
-    password: "123456"
+    password: "123456",
+    longitude: Faker::Address.longitude,
+    latitude: Faker::Address.latitude,
+    address: Faker::Address.full_address
   )
 end
 

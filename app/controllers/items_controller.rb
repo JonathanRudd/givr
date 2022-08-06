@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items = policy_scope(Item)
   end
 
   def show
@@ -10,7 +11,7 @@ class ItemsController < ApplicationController
 
   def create
   end
-  
+
   def edit
   end
 

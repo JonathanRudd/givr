@@ -9,7 +9,6 @@
 require 'faker'
 require 'open-uri'
 
-
 puts "Destroying all users"
 User.destroy_all
 

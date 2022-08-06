@@ -9,11 +9,12 @@
 require 'faker'
 require 'open-uri'
 
+puts "Destroying all pickups"
+Pickup.destroy_all
 puts "Destroying all items"
 Item.destroy_all
 puts "Destroying all users"
 User.destroy_all
-
 
 puts "creating Keanu and 5 other users"
 
@@ -60,17 +61,20 @@ end
 # item = Item.new()
 # item.image.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
-# 10.times do
+puts "creating 10 pickups"
 
-#  user_ids = User.all.pluck(:id)
-#  item_ids = Item.all.pluck(:id)
+10.times do
 
-#   Pickup.create!(
-#     user_id: user_ids.sample,
-#     item_id: item_ids.sample,
-#     status: "",
-#     note: "Is today ok?",
-#     time:
-#     date:
-#   )
-# end
+  user_ids = User.all.pluck(:id)
+  item_ids = Item.all.pluck(:id)
+  # enum_times = [1, 2, 3]
+
+  Pickup.create!(
+    user_id: user_ids.sample,
+    item_id: item_ids.sample,
+    status: "pending",
+    note: Faker::Lorem.sentences(number: 1),
+    time: rand(5),
+    date: Faker::Date.between(from: Date.today, to: 1.week.from_now)
+  )
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_020409) do
+ActiveRecord::Schema.define(version: 2022_08_06_021016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 2022_08_06_020409) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "pickups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "status"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_pickups_on_item_id"
+    t.index ["user_id"], name: "index_pickups_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,4 +50,6 @@ ActiveRecord::Schema.define(version: 2022_08_06_020409) do
   end
 
   add_foreign_key "items", "users"
+  add_foreign_key "pickups", "items"
+  add_foreign_key "pickups", "users"
 end

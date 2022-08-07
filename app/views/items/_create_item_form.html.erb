@@ -1,7 +1,7 @@
 <%= simple_form_for :item do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-
+  <%= f.input :title, placeholder: 'Item name', error_html: { id: 'password_error' }%>
+  <%= f.input :description, as: :text, placeholder: 'Features, weight, dimensions, etc' %>
+  <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
   <%= f.submit class: "btn btn-primary mt-4" %>
   <%#= link_to "Delete", pet_path(Pet.last), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   <%#= button_to "Delete", pet_path(Pet.last), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>

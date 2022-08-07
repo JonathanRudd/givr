@@ -1,1 +1,15 @@
-<h1>This is the index page!</h1>
+<h1>All items</h1>
+
+<div class="row row-cols-1 row-cols-md-3">
+  <% @items.each do |item| %>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <%= image_tag unsplash_image_url(size: '800x600', tags: 'building') %>
+          <div class="card-body">
+            <h5 class="card-title"> <%= item.title %></h5>
+            <p class="card-text"><%= item.description %><br><%= item.timeframe %></p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

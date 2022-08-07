@@ -2,12 +2,13 @@
 
 <div class="row row-cols-1 row-cols-md-3">
   <% @items.each do |item| %>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card h-100">
-          <%= image_tag unsplash_image_url(size: '800x600', tags: 'building') %>
+          <%= image_tag unsplash_image_url(size: '300x200', tags: 'surfboard') %>
           <div class="card-body">
             <h5 class="card-title"> <%= item.title %></h5>
-            <p class="card-text"><%= item.description %><br><%= item.timeframe %></p>
+            <p class="card-text"><%= item.description %>
+            <p class="card-text"><i class="fa fa-truck"></i> <%= item.timeframe %></p>
           </div>
         </div>
       </div>

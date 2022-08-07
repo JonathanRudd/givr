@@ -32,6 +32,7 @@ gem 'pundit'
 gem 'devise'
 
 gem 'unsplash'
+gem "unsplash_image"
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 5.6.1'

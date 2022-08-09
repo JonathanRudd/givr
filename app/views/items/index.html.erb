@@ -1,1 +1,25 @@
-<h1>This is the index page!</h1>
+<h1>Electronics</h1>
+<h2> <%= @items.count %> results</h2>
+
+<div class="outer-container">
+  <div class="grid">
+    <% @items.each do |item| %>
+      <div class="item">
+      <a href="#0" aria-labelledby="person1"></a>
+      <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img" %>
+        <div class="item-overlay">
+        <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
+          <div class="item-body">
+            <ul>
+              <li><p><strong>Description</strong></p></li>
+              <li id="item-desc"><p><%= item.description %></p></li>
+              <li><br></li>
+              <li><p><strong>Pick this up</strong><p></li>
+              <li><p><%= item.timeframe %></p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

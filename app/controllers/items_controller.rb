@@ -10,9 +10,19 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    authorize @item
   end
 
   def create
+    @item = Item.new(item_params)
+    @item.user_id = current_user.id
+    authorize @item
+    if @item.save
+      redirect_to items_path, notice: 'New item registered'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -27,6 +37,10 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+<<<<<<< HEAD
     params.require(:item).permit(:title, :description, :timeframe)
+=======
+    params.require(:item).permit(:user_id, :title, :description, :timeframe, images: [])
+>>>>>>> master
   end
 end

@@ -51,9 +51,9 @@ Item.create!(
 
   Item.create!(
     user_id: user_ids.sample,
-    title: Faker::Appliance.equipment,
-    description: "This is a cool thing, please take it",
-    timeframe: "Whenever"
+    title: "#{Faker::Appliance.brand} #{Faker::Appliance.equipment}",
+    description: "This #{Faker::Hacker.adjective} is great for #{Faker::Hobby.activity}",
+    timeframe: "Free on Weekends"
   )
 end
 

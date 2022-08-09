@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    # @pickup = Pickup.new(user_id: current_user.id, item_id: @item.id)
+    authorize @item
   end
 
   def new

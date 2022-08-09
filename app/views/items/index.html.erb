@@ -6,7 +6,11 @@
     <% @items.each do |item| %>
       <div class="item">
       <a href="#0" aria-labelledby="person1"></a>
-      <img style='width: 100%; object-fit: cover' src="<%= item.images.attached? ? cl_image_path(item.images.first.key) : asset_path("n64.jpg") %>">
+          <% if item.images.attached?%>
+            <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
+          <% else %>
+            <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
+          <% end %>
         <div class="item-overlay">
         <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
           <div class="item-body">

@@ -12,11 +12,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new
+    @item = Item.new(item_params)
     @item.user_id = current_user.id
     authorize @item
     if @item.save
-      redirect_to '/items', notice: 'New item registered'
+      redirect_to items_path, notice: 'New item registered'
     else
       render :new
     end
@@ -29,5 +29,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:user_id, :title, :description, :timeframe, images: [])
   end
 end

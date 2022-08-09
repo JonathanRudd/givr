@@ -5,7 +5,7 @@
   <div class="grid">
     <% @items.each do |item| %>
       <div class="item">
-      <a href="#0" aria-labelledby="person1"></a>
+      <%= link_to "", item_url(item), class: "nav-link" %>
           <% if item.images.attached?%>
             <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
           <% else %>

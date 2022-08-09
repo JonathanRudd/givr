@@ -5,21 +5,19 @@
   <div class="grid">
     <% @items.each do |item| %>
       <div class="item">
-      <%# <a href="#0" aria-labelledby="person1"></a> %>
-      <%= link_to "", item_url(item)%>
-      <% if item.images.attached?%>
+      <a href="#0" aria-labelledby="person1"></a>
+          <% if item.images.attached?%>
             <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
           <% else %>
-            <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img" %>
+            <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
           <% end %>
-      <div class="item-overlay">
+        <div class="item-overlay">
         <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
           <div class="item-body">
             <ul>
               <li><p><strong>Description</strong></p></li>
               <li id="item-desc"><p><%= item.description %></p></li>
               <li><br></li>
-              
               <li><p><strong>Pick this up</strong><p></li>
               <li><p><%= item.timeframe %></p></li>
             </ul>

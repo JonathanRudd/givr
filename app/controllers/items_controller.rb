@@ -37,10 +37,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-<<<<<<< HEAD
-    params.require(:item).permit(:title, :description, :timeframe)
-=======
     params.require(:item).permit(:user_id, :title, :description, :timeframe, images: [])
->>>>>>> master
   end
 end

@@ -20,7 +20,11 @@
       <div class="title">
         <h1><%= @item.title %></h1>
         <div class="">
-          <%= image_tag unsplash_image_url(tags: 'surfboard') %>
+          <% if @item.images.attached?%>
+            <%= cl_image_tag(@item.images.first.key) %>
+          <% else %>
+            <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img" %>
+          <% end %>
         </div>
         
       </div>

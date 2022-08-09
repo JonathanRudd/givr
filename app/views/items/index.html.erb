@@ -6,7 +6,7 @@
     <% @items.each do |item| %>
       <div class="item">
       <a href="#0" aria-labelledby="person1"></a>
-      <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img" %>
+      <img style='width: 100%; object-fit: cover' src="<%= item.images.attached? ? cl_image_path(item.images.first.key) : asset_path("n64.jpg") %>">
         <div class="item-overlay">
         <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
           <div class="item-body">

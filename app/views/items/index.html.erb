@@ -5,7 +5,8 @@
   <div class="grid">
     <% @items.each do |item| %>
       <div class="item">
-      <a href="#0" aria-labelledby="person1"></a>
+      <%= link_to "", item_url(item)%>
+      <%# <a href="#0" aria-labelledby="person1"></a> %>
       <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img" %>
         <div class="item-overlay">
         <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
@@ -14,6 +15,7 @@
               <li><p><strong>Description</strong></p></li>
               <li id="item-desc"><p><%= item.description %></p></li>
               <li><br></li>
+              
               <li><p><strong>Pick this up</strong><p></li>
               <li><p><%= item.timeframe %></p></li>
             </ul>

@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    # @pickup = Pickup.new(user_id: current_user.id, item_id: @item.id)
+    authorize @item
   end
 
   def new
@@ -19,5 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:title, :description, :timeframe)
   end
 end

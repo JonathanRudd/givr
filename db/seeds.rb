@@ -21,8 +21,8 @@ puts "creating Keanu and 5 other users"
 User.create!(
   email: "Keanu@gmail.com",
   password: "123456",
-  longitude: 40.7411,
-  latitude: 73.9897,
+  longitude: 35.4116516,
+  latitude: 139.5178194,
   address: "Flatiron Building, New York City"
 )
 

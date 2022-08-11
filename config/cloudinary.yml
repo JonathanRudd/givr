@@ -7,3 +7,9 @@ default: &default
 
 staging:
   <<: *default
+
+production:
+  cloud_name: "jh2tc"
+  api_key: "888353585318946"
+  api_secret: "ECxqFQr3eILaxekBKHnWLPAteYQ"
+  secure: true

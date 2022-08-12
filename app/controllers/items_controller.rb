@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     # @pickup = Pickup.new(user_id: current_user.id, item_id: @item.id)
     authorize @item
+    @markers = [{
+      lat: @item.user.latitude,
+      lng: @item.user.longitude
+    }]
   end
 
   def new

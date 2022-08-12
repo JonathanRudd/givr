@@ -4,6 +4,7 @@
     <%= f.input :description, as: :text, placeholder: 'Features, weight, dimensions, etc' %>
     <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
     <%= f.input :images, as: :file, input_html: { multiple: true }%>
+    <%= f.input :tag_list, as: :check_boxes, collection: [ "Check applicable tags" ] %>
     <%= f.submit class: "btn btn-primary mt-4" %>
     <%#= link_to "Delete", pet_path(Pet.last), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     <%#= button_to "Delete", pet_path(Pet.last), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>

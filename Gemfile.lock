@@ -305,7 +305,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  acts-as-taggable-on
+  acts-as-taggable-on (~> 9.0)
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.4)
   byebug

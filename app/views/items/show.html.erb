@@ -1,40 +1,4 @@
 
-
-  <body>
-    <div class="logged-in">
-      <p>You are logged in as user: <%= @item.user.email %></p>
-    </div>
-    <br>
-    <br>
-    <div class="container pt-3">
-    <%= link_to 'Back', items_path %>
-      <div class="title">
-        <h1><%= @item.title %></h1>
-        <div class="">
-          <% if @item.images.attached?%>
-            <%= cl_image_tag(@item.images.first.key) %>
-          <% else %>
-            <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img" %>
-          <% end %>
-        </div>
-
-      </div>
-      <br>
-      <span class="details">
-        <p><%= @item.description %>
-
-        <div class="text-muted mb-3">
-          <p><%= @item.description %></p>
-          <p> <%= @item.timeframe %></p>
-          <p> Categories: <%= @item.tag_list %></p>
-        </div>
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.
-      min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRm5q
-      +8nbTov4+1p" crossorigin="anonymous"></script>
-  </body>
-</html>
-
 <div class="container min-height-90vh">
   <div class="card-description card-description-img">
     <% if @item.images.attached? %>

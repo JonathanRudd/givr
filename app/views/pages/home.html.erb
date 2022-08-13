@@ -4,7 +4,7 @@
   give them a second chance and save the planet!<br>
 <!-- Button to sign up -->
     <div class="col-lg-12 space" style="text-align:center">
-      <button class="btn btn-large btn-success">Sign up</button>
+      <%= link_to "Sign up", new_user_session_path, class: "btn btn-large btn-success" %>
     </div>
   </div>
 </div>
@@ -45,6 +45,6 @@
   </div>
 <!-- Button to index -->
   <div class="col-lg-12 space" style="text-align:center">
-    <button class="btn btn-large btn-light">See more give aways</button>
+    <%= link_to "See more give aways", items_path, class: "btn btn-large btn-light" %>
   </div>
 </div>

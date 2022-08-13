@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -21,8 +22,8 @@ puts "creating Keanu and 5 other users"
 User.create!(
   email: "Keanu@gmail.com",
   password: "123456",
-  longitude: 35.4116516,
-  latitude: 139.5178194,
+  longitude: 40.7411,
+  latitude: 73.9897,
   address: "Flatiron Building, New York City"
 )
 
@@ -35,6 +36,8 @@ User.create!(
     address: Faker::Address.full_address
   )
 end
+
+seedtags = ["kitchen", "apparel", "tools", "home entertainment", "games", "furniture"]
 
 puts "creating Keanus surfboard and 20 other items"
 
@@ -49,12 +52,14 @@ Item.create!(
 
   user_ids = User.all.pluck(:id)
 
-  Item.create!(
+  itemseed = Item.create!(
     user_id: user_ids.sample,
-    title: Faker::Appliance.equipment,
-    description: "This is a cool thing, please take it",
-    timeframe: "Whenever"
+    title: "#{Faker::Appliance.brand} #{Faker::Appliance.equipment}",
+    description: "This #{Faker::Hacker.adjective} is great for #{Faker::Hobby.activity}",
+    timeframe: "Free on Weekends"
   )
+  itemseed.tag_list.add(seedtags.sample(2))
+  itemseed.save!
 end
 
 # file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg')

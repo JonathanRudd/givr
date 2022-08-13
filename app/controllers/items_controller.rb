@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
     @items = policy_scope(Item)
+    if params[:tag].present?
+      @items = @items.tagged_with(params[:tag])
+    end
   end
 
   def show

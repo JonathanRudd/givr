@@ -1,11 +1,11 @@
 
 <div class="container min-height-90vh">
   <div class="card-description card-description-img">
-    <% if @item.images.attached? %>
-      <%= cl_image_tag @item.images.first.key, class: "img-card" %>
-    <% else %>
-      <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img-card" %>
-    <% end %>
+          <% if @item.images.attached?%>
+            <img src="<%= cl_image_path(@item.images.first.key) %>" alt="image">
+          <% else %>
+            <%= image_tag unsplash_image_url(tags: @item.title), class: "img" %>
+          <% end %>
   </div>
 
   <div class="card card-description card-description-left">

@@ -19,6 +19,7 @@ User.destroy_all
 puts "creating Keanu and 5 other users"
 
 User.create!(
+  nickname: "Keany",
   email: "Keanu@gmail.com",
   password: "123456",
   longitude: 35.4116516,

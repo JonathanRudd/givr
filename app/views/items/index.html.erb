@@ -1,11 +1,11 @@
-<%= form_with url: items_path, method: :get do |f| %>
-  <%= f.label :tag, "Search for:" %>
-  <%= f.text_field :tag %>
-  <%= f.submit "Search" %>
+<%= form_with url: items_path, method: :get, class: "form" do |f| %>
+  <%= f.label :tag, "Search for:", class: "label" %>
+  <%= f.text_field :tag, placeholder: 'Furniture', class: "field"  %>
+  <%= f.submit "Search", class: "form-button" %>
 <% end %>
 
 <div class="top-menu">
-  <h1>All items</h1>
+  <h1>You searched for '<%= params[:tag] %>'</h1>
   <h2><%= @items.count %> results</h2>
 </div>
 

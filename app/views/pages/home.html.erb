@@ -1,1 +1,50 @@
-<h1>Pages#home</h1>
+<!-- First parallax for the landing -->
+<div class="parallax img1">
+  <div class="par">Don't throw your loved items out,<br>
+  give them a second chance and save the planet!<br>
+<!-- Button to sign up -->
+    <div class="col-lg-12 space" style="text-align:center">
+      <button class="btn btn-large btn-success">Sign up</button>
+    </div>
+  </div>
+</div>
+<!-- Second parallax -->
+<div class="parallax img2">
+  <div class="par">Save space.<br>Easily upload items you no longer need.<br>Arrange a pick up date.</div>
+</div>
+<!-- Third parallax -->
+<div class="parallax3 img3">
+  <p class="par3">Givr has hundreds of items looking for a new home. Save money and search now.</p>
+  <h3 class="par">Latest items looking for a new home</h3>
+<!-- Latest 4 items -->
+  <div class="outer-container">
+  <div class="grid">
+    <% array = Item.last(4) %>
+    <% array.each do |item| %>
+      <div class="item">
+      <%= link_to "", item_url(item), class: "nav-link" %>
+          <% if item.images.attached?%>
+            <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
+          <% else %>
+            <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
+          <% end %>
+        <div class="item-overlay">
+        <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
+          <div class="item-body">
+            <ul>
+              <li><p><strong>Description</strong></p></li>
+              <li id="item-desc"><p><%= item.description %></p></li>
+              <li><br></li>
+              <li><p><strong>Pick this up</strong><p></li>
+              <li><p><%= item.timeframe %></p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<!-- Button to index -->
+  <div class="col-lg-12 space" style="text-align:center">
+    <button class="btn btn-large btn-light">See more give aways</button>
+  </div>
+</div>

@@ -26,7 +26,7 @@
             <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img" %>
           <% end %>
         </div>
-        
+
       </div>
       <br>
       <span class="details">
@@ -35,6 +35,7 @@
         <div class="text-muted mb-3">
           <p><%= @item.description %></p>
           <p> <%= @item.timeframe %></p>
+          <p> Categories: <%= @item.tag_list %></p>
         </div>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.

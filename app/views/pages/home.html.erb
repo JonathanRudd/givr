@@ -21,7 +21,7 @@
 <!-- Latest 4 items -->
   <div class="outer-container">
   <div class="grid">
-    <% array = Item.last(5) %>
+    <% array = Item.last(4) %>
     <% array.each do |item| %>
       <div class="item">
       <%= link_to "", item_url(item), class: "nav-link" %>

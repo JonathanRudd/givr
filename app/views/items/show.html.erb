@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
   <body>
     <div class="logged-in">
       <p>You are logged in as user: <%= @item.user.email %></p>
@@ -34,7 +34,7 @@
       +8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
-=======
+
 <div class="container min-height-90vh">
   <div class="card-description card-description-img">
     <% if @item.images.attached? %>
@@ -43,7 +43,7 @@
       <%= image_tag unsplash_image_url(tags: 'surfboard'), class: "img-card" %>
     <% end %>
   </div>
-  
+
   <div class="card card-description card-description-left">
     <div class="card-body card-description-text-show">
       <h1 class="title-show"><%= @item.title %></h1>
@@ -64,4 +64,3 @@
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
 </div>
->>>>>>> master

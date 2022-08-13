@@ -1,17 +1,20 @@
 <!-- First parallax for the landing -->
-<div class="parallax img1">
-  <div class="par">Don't throw your loved items out,<br>
-  give them a second chance and save the planet!<br>
-<!-- Button to sign up -->
-    <div class="col-lg-12 space" style="text-align:center">
-      <button class="btn btn-large btn-success">Sign up</button>
+<% unless current_user %>
+  <div class="parallax img1">
+    <div class="par">Don't throw your loved items out,<br>
+    give them a second chance and save the planet!<br>
+  <!-- Button to sign up -->
+      <div class="col-lg-12 space" style="text-align:center">
+        <button class="btn btn-large btn-success">Sign up</button>
+      </div>
     </div>
   </div>
-</div>
-<!-- Second parallax -->
-<div class="parallax img2">
-  <div class="par">Save space.<br>Easily upload items you no longer need.<br>Arrange a pick up date.</div>
-</div>
+  <!-- Second parallax -->
+  <div class="parallax img2">
+    <div class="par">Save space.<br>Easily upload items you no longer need.<br>Arrange a pick up date.</div>
+  </div>
+<% end %>
+
 <!-- Third parallax -->
 <div class="parallax3 img3">
   <p class="par3">Givr has hundreds of items looking for a new home. Save money and search now.</p>

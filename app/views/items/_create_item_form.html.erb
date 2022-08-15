@@ -5,7 +5,10 @@
     <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
     <%= f.input :images, as: :file, input_html: { multiple: true }%>
     <div>
-      <%= f.input :tag_list, as: :check_boxes, collection: [ "kitchen", "apparel", "tools", "home entertainment", "games", "furniture" ] %>
+      <%= f.input :tag_list, as: :check_boxes, label: "Categories", collection: [ "kitchen", "apparel", "tools", "home entertainment", "games", "furniture" ] %>
+    </div>
+        <div>
+      <%= f.input :tag_list, label: "Other category:", hint: "Add your tags, separated by commas" %>
     </div>
     <%= f.submit class: "btn btn-success mt-4" %>
     <%#= link_to "Delete", pet_path(Pet.last), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>

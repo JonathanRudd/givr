@@ -7,11 +7,12 @@
     <div>
       <%= f.input :tag_list, as: :check_boxes, label: "Categories", collection: [ "kitchen", "apparel", "tools", "home entertainment", "games", "furniture" ] %>
     </div>
-        <div>
+    <%# <div>
       <%= f.input :tag_list, label: "Other category:", hint: "Add your tags, separated by commas" %>
+    <%# </div> %>
+    <div class="container mb-4">
+      <%= f.submit class: "btn btn-success mt-4" %>
     </div>
-    <%= f.submit class: "btn btn-success mt-4" %>
-    <%#= link_to "Delete", pet_path(Pet.last), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-    <%#= button_to "Delete", pet_path(Pet.last), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+
   <% end %>
 </div>

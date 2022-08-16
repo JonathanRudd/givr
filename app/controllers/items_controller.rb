@@ -20,6 +20,18 @@ class ItemsController < ApplicationController
       lat: @item.user.latitude,
       lng: @item.user.longitude
     }]
+    @recommendation_markers = [
+      {
+        lat: 35.6360,
+        lng: 139.7079
+      },
+      {
+        lat: 35.6270,
+        lng: 139.7082
+      },
+    ]
+
+    @all_markers = @markers + @recommendation_markers
   end
 
   def new

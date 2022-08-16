@@ -23,9 +23,9 @@ User.create!(
   nickname: "Keany",
   email: "Keanu@gmail.com",
   password: "123456",
-  longitude: 40.7411,
-  latitude: 73.9897,
-  address: "Flatiron Building, New York City"
+  longitude: 139.7082,
+  latitude: 35.6338,
+  address: "Impact Hub Tokyo, Meguro"
 )
 
 5.times do

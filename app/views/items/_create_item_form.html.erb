@@ -4,11 +4,18 @@
     <%= f.input :description, as: :text, placeholder: 'Features, weight, dimensions, etc' %>
     <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
     <%= f.input :images, as: :file, input_html: { multiple: true }%>
-    <div>
-      <%= f.input :tag_list, as: :check_boxes, collection: [ "kitchen", "apparel", "tools", "home entertainment", "games", "furniture" ] %>
+    <h6>Categories:</h6>
+    <div class="container" style="" >
+      <%= f.input :tag_list, as: :check_boxes, wrapper_html: {class: "column-checkboxes", style: "columns: 100px 4; column-rule: 0px solid"}, label: "", collection: ActsAsTaggableOn::Tag.most_used(10).map {|tag| tag.name} %>
     </div>
-    <%= f.submit class: "btn btn-success mt-4" %>
-    <%#= link_to "Delete", pet_path(Pet.last), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-    <%#= button_to "Delete", pet_path(Pet.last), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+    <%# Won´t save, even when not below the checklist input. Raise shows array before save %>
+
+    <%# <%= f.input :tag_list, label: "Other category:", hint: "Add your tags, separated by commas" %>
+
+    <div class="container mb-4">
+      <%= f.submit class: "btn btn-success mt-4" %>
+    </div>
   <% end %>
 </div>
+
+<%#   %>

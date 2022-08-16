@@ -4,15 +4,14 @@
     <%= f.input :description, as: :text, placeholder: 'Features, weight, dimensions, etc' %>
     <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
     <%= f.input :images, as: :file, input_html: { multiple: true }%>
-    <div>
-      <%= f.input :tag_list, as: :check_boxes, label: "Categories", collection: [ "kitchen", "apparel", "tools", "home entertainment", "games", "furniture" ] %>
-    </div>
-    <%# <div>
-      <%= f.input :tag_list, label: "Other category:", hint: "Add your tags, separated by commas" %>
-    <%# </div> %>
+    <%= f.input :tag_list, as: :check_boxes, label: "Categories", collection: [ "kitchen", "apparel", "tools", "home entertainment", "games", "furniture" ] %>
+
+    <%# Won´t save, even when not below the checklist input. Raise shows array before save %>
+
+    <%# <%= f.input :tag_list, label: "Other category:", hint: "Add your tags, separated by commas" %>
+
     <div class="container mb-4">
       <%= f.submit class: "btn btn-success mt-4" %>
     </div>
-
   <% end %>
 </div>

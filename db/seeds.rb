@@ -1,4 +1,3 @@
-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -42,15 +41,16 @@ seedtags = ["kitchen", "apparel", "tools", "home entertainment", "games", "furni
 
 puts "creating Keanus surfboard and 20 other items"
 
-Item.create!(
+surf = Item.create!(
   user_id: User.first.id,
   title: "Surfboard",
   description: "2nd hand surfboard, still looks great",
   timeframe: "Whoa, whenever"
 )
+surf.tag_list.add("sports equipment")
+surf.save!
 
 20.times do
-
   user_ids = User.all.pluck(:id)
 
   itemseed = Item.create!(
@@ -70,7 +70,6 @@ end
 puts "creating 10 pickups"
 
 10.times do
-
   user_ids = User.all.pluck(:id)
   item_ids = Item.all.pluck(:id)
   # enum_times = [1, 2, 3]

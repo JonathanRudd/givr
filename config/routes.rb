@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   end
   resources :pickups, only: [:index, :show, :update, :destroy]
 
-  get 'giveaways', to: 'giveaways#index', as: 'giveaways'
+  # get 'giveaways', to: 'items#my_items', as: 'giveaways'
+
+  get 'dashboard', to: 'items#my_items', as: 'dashboard'
 end

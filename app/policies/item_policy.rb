@@ -2,10 +2,14 @@ class ItemPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope
+      scope.all
     end
   end
 
+  def show?
+    true
+  end
+  
   def new?
     true
   end
@@ -28,5 +32,9 @@ class ItemPolicy < ApplicationPolicy
 
   def update?
     record.user == user
+  end
+
+  def my_items?
+    true
   end
 end

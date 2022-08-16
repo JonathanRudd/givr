@@ -1,0 +1,8 @@
+<div class="container">
+  <%= simple_form_for [@item, @pickup] do |f| %>
+    <%= f.input :date, as: :date, placeholder: 'Request Pick-up Date' %>
+    <%= f.input :time, as: :integer, placeholder: 'Request Pick-up Time' %>
+    <%= f.input :note, placeholder: 'Messages to the Givr' %>
+    <%= f.submit class: "btn btn-success mt-4" %>
+  <% end %>
+</div>

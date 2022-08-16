@@ -13,7 +13,7 @@
           <div class="item-body">
             <ul>
               <li><p><strong>Description</strong></p></li>
-              <li id="item-desc"><p><%= item.description %></p></li>
+              <li id="item-desc"><p><%= item.description.truncate(50) %></p></li>
               <li><br></li>
               <li><p><strong>Pick this up</strong><p></li>
               <li><p><%= item.timeframe %></p></li>

@@ -3,11 +3,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = policy_scope(Item)
-    if params[:tag].present?
-      @items = @items.tagged_with(params[:tag])
-    end
     if params[:title].present?
-      @items = Item.where(title: params[:title])
+      @items = Item.search_by_title(params[:title])
     else
       @items = Item.all
     end

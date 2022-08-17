@@ -1,8 +1,6 @@
 <%= form_with url: items_path, method: :get, class: "form" do |f| %>
-  <%= f.label :tag, "Search by tag:", class: "label" %>
-  <%= f.text_field :tag, placeholder: 'furniture', class: "field"  %>
-  <%= f.label :title, "Search by item:", class: "label" %>
-  <%= f.text_field :title, placeholder: 'sofa', class: "field"  %>
+  <%= f.label :title, "Search:", class: "label" %>
+  <%= f.text_field :title, class: "field"  %>
   <%= f.submit "Search", class: "form-button" %>
 <% end %>
 

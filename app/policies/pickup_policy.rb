@@ -2,8 +2,10 @@ class PickupPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope = scope.joins(:item)
-      scope.where(user: user).or(scope.where(items: {user_id: user.id}))
+      # scope.all
+      # scope = scope.joins(:item)
+      # scope.where(user: user).or(scope.where(items: {user_id: user.id}))
+      scope.where(user: user)
     end
   end
 
@@ -29,5 +31,9 @@ class PickupPolicy < ApplicationPolicy
 
   def update?
     record.item.user == user || record.user == user
+  end
+
+  def my_dashboard?
+    true
   end
 end

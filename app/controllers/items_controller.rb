@@ -13,10 +13,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def my_items
-    @items = policy_scope(Item).where(user_id: current_user.id)
-    authorize @items
-  end
+  # def my_items
+  #   @items = policy_scope(Item).where(user_id: current_user.id)
+  #   authorize @items
+  # end
 
   def show
     @item = Item.find(params[:id])
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
     authorize @item
     if @item.save
-      redirect_to items_path, notice: 'New item registered'
+      redirect_to dashboard_path, notice: 'New item registered'
     else
       render :new
     end

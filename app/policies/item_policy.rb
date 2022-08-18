@@ -9,7 +9,7 @@ class ItemPolicy < ApplicationPolicy
   def show?
     true
   end
-  
+
   def new?
     true
   end
@@ -34,7 +34,7 @@ class ItemPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def my_items?
+  def my_dashboard?
     true
   end
 end

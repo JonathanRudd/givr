@@ -24,8 +24,21 @@ class ItemsController < ApplicationController
     authorize @item
     @markers = [{
       lat: @item.user.latitude,
-      lng: @item.user.longitude
+      lng: @item.user.longitude,
+      # info_window: render_to_string(partial: "info_window", locals: { item: item })
     }]
+    # @recommendation_markers = [
+    #   {
+    #     lat: 35.6360,
+    #     lng: 139.7079
+    #   },
+    #   {
+    #     lat: 35.6270,
+    #     lng: 139.7082
+    #   },
+    # ]
+
+    # @all_markers = @markers + @recommendation_markers
   end
 
   def new

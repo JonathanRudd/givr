@@ -22,20 +22,59 @@ User.create!(
   nickname: "Keany",
   email: "Keanu@gmail.com",
   password: "123456",
-  longitude: 40.7411,
-  latitude: 73.9897,
-  address: "Flatiron Building, New York City"
+  longitude: 139.7082,
+  latitude: 35.6338,
+  address: "Impact Hub Tokyo, Meguro"
 )
 
-5.times do
-  User.create!(
-    email: Faker::Internet.email,
-    password: "123456",
-    longitude: Faker::Address.longitude,
-    latitude: Faker::Address.latitude,
-    address: Faker::Address.full_address
-  )
-end
+User.create!(
+  nickname: "Ashish",
+  email: "ashish@gmail.com",
+  password: "123456",
+  longitude: 139.6397,
+  latitude: 35.4569,
+  address: "Yokohama, MInatomirai"
+)
+
+
+User.create!(
+  nickname: "January",
+  email: "january@gmail.com",
+  password: "123456",
+  longitude: 139.7795,
+  latitude: 35.6232,
+  address: "Odaiba, Tokyo Bay"
+)
+
+User.create!(
+  nickname: "Mark",
+  email: "mark@gmail.com",
+  password: "123456",
+  longitude: 139.3386,
+  latitude: 35.6582,
+  address: "Hachioji Station"
+)
+
+User.create!(
+  nickname: "Jonathan",
+  email: "jonathan@gmail.com",
+  password: "123456",
+  longitude: 139.7667,
+  latitude: 35.6834,
+  address: "Tokyo Station"
+)
+
+
+
+# 5.times do
+#   User.create!(
+#     email: Faker::Internet.email,
+#     password: "123456",
+#     longitude: Faker::Address.longitude,
+#     latitude: Faker::Address.latitude,
+#     address: Faker::Address.full_address
+#   )
+# end
 
 seedtags = ["kitchen", "apparel", "tools", "home entertainment", "games", "furniture"]
 

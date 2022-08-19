@@ -1,29 +1,21 @@
 <h1>My Page</h1>
 
 <ul class="tabs">
-  <li data-tab-target="#my-items" class="active tab">My Listed Items</li>
+  <li data-tab-target="#my-items" class="active tab">My Items</li>
   <li data-tab-target="#my-pickups" class="tab">My Pickups</li>
 </ul>
 
 <div class="tabcontent">
   <div id="my-items" data-tab-content class="active">
-
-<h1>My Give Away Items</h1>
-<div class="row row-cols-1 row-cols-md-4">
-<h2><%= @my_items.count %> results</h2>
-<%= render 'shared/cards' %>
-
-    </div>
+  <h2>My Give Away Items</h2>
+  <h2><%= @my_items.count %> results</h2>
   </div>
 </div>
 
 <div class="tabcontent">
   <div id="my-pickups" data-tab-content>
-
-    <h1>My Pickups</h1>
-    <div class="row row-cols-1 row-cols-md-4">
-    <h2><%= @my_pickups.count %> results</h2>
-    <%= render 'shared/pickup_card' %>
+  <h2>My Pickups</h2>
+  <h2><%= @my_pickups.count %> results</h2>
+  <%= render 'shared/pickups-cards' %>
   </div>
-</div>
 </div>

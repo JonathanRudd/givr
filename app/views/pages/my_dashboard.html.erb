@@ -7,15 +7,16 @@
 
 <div class="tabcontent">
   <div id="my-items" data-tab-content class="active">
-  <h2>My Give Away Items</h2>
-  <h2><%= @my_items.count %> results</h2>
+    <h6>My Give Away Items</h6>
+    <p><%= @my_items.count %> results</p>
+    <%= render 'shared/cards' %>
   </div>
 </div>
 
 <div class="tabcontent">
   <div id="my-pickups" data-tab-content>
-  <h2>My Pickups</h2>
-  <h2><%= @my_pickups.count %> results</h2>
-  <%= render 'shared/pickups-cards' %>
+    <h6>My Pickups</h6>
+    <p><%= @my_pickups.count %> results</p>
+    <%= render 'shared/pickups-cards' %>
   </div>
 </div>

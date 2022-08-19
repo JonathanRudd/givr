@@ -1,0 +1,51 @@
+// Place all the styles related to items and pickups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* Tabs */
+
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.tab.active {
+  background-color: rgb(150, 213, 150);
+}
+
+.tab:hover {
+  background-color: rgb(179, 255, 179);
+}
+
+.tab-content {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+
+.card {
+  margin: 24px;
+}

@@ -1,6 +1,6 @@
 <div class="outer-container">
   <div class="grid">
-    <% @my_items.each do |item| %>
+    <% @items.each do |item| %>
       <div class="item">
       <%= link_to "", item_url(item), class: "nav-link" %>
           <% if item.images.attached?%>

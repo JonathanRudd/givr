@@ -19,7 +19,6 @@
                   <li id="item-desc"><p><%= item.tag_list %></p></li>
                   <li><br></li>
                   <li></li>
-
                 </ul>
               </div>
             </div>
@@ -38,6 +37,23 @@
         <div class="container">
           <p><%= %></p>
           <p><%= "button" %></p>
+            <% if item.pickup.status %>
+                    <div class="d-flex">
+                      <%= simple_form_for pickup do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                        <%= f.submit 'Accept', class: 'btn btn-info' %>
+                      <% end %>
+
+                      <%= simple_form_for pickup do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                        <%= f.submit 'Reject', class: 'btn btn-light' %>
+                      <% end %>
+                    </div>
+              <% else %>
+                <!-- Display Status-->
+                <p class='pickup-tag'><%= pickup.status %></p>
+              <% end %>
+
         </div>
       </div>
       </div>

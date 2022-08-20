@@ -18,6 +18,24 @@
               <li><p><strong>Pick this up</strong><p></li>
               <li><p><%= pickup.item.timeframe %></p></li>
             </ul>
+
+            <% if pickup.status %>
+                    <div class="d-flex">
+                      <%= simple_form_for pickup do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                        <%= f.submit 'Accept', class: 'btn btn-info' %>
+                      <% end %>
+
+                      <%= simple_form_for pickup do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                        <%= f.submit 'Reject', class: 'btn btn-light' %>
+                      <% end %>
+                    </div>
+              <% else %>
+                <!-- Display Status-->
+                <p class='pickup-tag'><%= pickup.status %></p>
+              <% end %>
+
           </div>
         </div>
       </div>

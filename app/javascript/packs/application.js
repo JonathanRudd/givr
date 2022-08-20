@@ -14,3 +14,7 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+import {initializeTabs} from "./tabs"
+document.addEventListener('turbolinks:load', () => {
+  initializeTabs()
+});

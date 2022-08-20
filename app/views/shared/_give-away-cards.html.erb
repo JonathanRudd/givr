@@ -37,7 +37,7 @@
               <p><%= item.pickup.note %></p>
 
               <% item.pickup.messages.each do |message| %>
-                <%= message.content %>
+                <p><%= message.user.nickname %>: <%= message.content %></p>
               <% end %>
               <%= render 'messages/reply_form', pickup: item.pickup %>
 

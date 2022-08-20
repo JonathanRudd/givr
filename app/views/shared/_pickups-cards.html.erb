@@ -2,40 +2,37 @@
   <div class="grid">
     <% @my_pickups.each do |pickup| %>
       <div class="item">
-      <%= link_to "", pickup_url(pickup), class: "nav-link" %>
-          <% if pickup.item.images.attached?%>
-            <img src="<%= cl_image_path(pickup.item.images.first.key) %>" alt="image">
-          <% else %>
-            <%= image_tag unsplash_image_url(tags: pickup.item.title), class: "img" %>
-          <% end %>
+        <%= link_to "", pickup_url(pickup), class: "nav-link" %>
+        <% if pickup.item.images.attached?%>
+          <img src="<%= cl_image_path(pickup.item.images.first.key) %>" alt="image">
+        <% else %>
+          <%= image_tag unsplash_image_url(tags: pickup.item.title), class: "img" %>
+        <% end %>
         <div class="item-overlay">
-        <h5  id="person1" aria-hidden="true"><%= pickup.item.title %></h5>
+          <h5  id="person1" aria-hidden="true"><%= pickup.item.title %></h5>
           <div class="item-body">
             <ul>
-              <li><p><strong>Description</strong></p></li>
-              <li id="item-desc"><p><%= pickup.item.description.truncate(50) %></p></li>
-              <li><br></li>
-              <li><p><strong>Pick this up</strong><p></li>
-              <li><p><%= pickup.item.timeframe %></p></li>
+              <li>
+                <p><strong>Description</strong></p>
+              </li>
+              <li id="item-desc">
+                <p><%= pickup.item.description.truncate(50) %></p>
+              </li>
+              <li><br>
+              </li>
+              <li>
+                <p><strong>Pick this up</strong></p>
+                <p><%= pickup.item.timeframe %></p>
+              </li>
             </ul>
-
-            <% if pickup.status %>
-                    <div class="d-flex">
-                      <%= simple_form_for pickup do |f| %>
-                        <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                        <%= f.submit 'Accept', class: 'btn btn-info' %>
-                      <% end %>
-
-                      <%= simple_form_for pickup do |f| %>
-                        <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                        <%= f.submit 'Reject', class: 'btn btn-light' %>
-                      <% end %>
-                    </div>
-              <% else %>
-                <!-- Display Status-->
-                <p class='pickup-tag'><%= pickup.status %></p>
-              <% end %>
-
+            <% if pickup.pending? %>
+              <div class="d-flex">
+                <%= simple_form_for pickup, method: :delete do |f| %>
+                  <%= f.submit 'Cancel', class: 'btn btn-info' %>
+                <% end %>
+              </div>
+            <% end %>
+            <p class='pickup-tag'><%= pickup.status %></p>
           </div>
         </div>
       </div>

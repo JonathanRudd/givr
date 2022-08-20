@@ -116,7 +116,7 @@ puts "creating 10 pickups"
   Pickup.create!(
     user_id: user_ids.sample,
     item_id: item_ids.sample,
-    note: Faker::Lorem.sentences(number: 1),
+    note: Faker::Lorem.sentences(number: 1)[0],
     time: rand(0..1),
     date: Faker::Date.between(from: Date.today, to: 1.week.from_now)
   )

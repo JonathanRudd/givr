@@ -27,13 +27,20 @@
       </div>
       <div class="interior-description-card">
         <div class="container">
+          <p><%= %></p>
           <p><%= item.description %></p>
           <p>location: <%=  item.user.address%></p>
           <p><strong>Pick this up:</strong></p>
           <p><%= item.timeframe %></p>
-          <p><strong>Note:</strong></p>
           <% if item.pickup %>
-            <p><%= item.pickup.note %></p>
+            <div class="textarea">
+              <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
+              <p><%= item.pickup.note %></p>
+              <% item.pickup.messages.each do |message| %>
+                <p><%= message.user.nickname %>: <%= message.content %></p>
+              <% end %>
+              <%= render 'messages/reply_form', pickup: item.pickup %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -41,6 +48,7 @@
         <div class="container">
           <p><%= %></p>
           <% if item.pickup %>
+            <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
             <% if item.pickup.pending? %>
               <div class="d-flex">
                 <%= simple_form_for item.pickup do |f| %>

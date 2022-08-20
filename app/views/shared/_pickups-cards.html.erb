@@ -1,7 +1,7 @@
 
 
     <% @my_pickups.each do |pickup| %>
-        <div class="wide-card">
+        <div class="wide-card-pickup">
           <div class="interior-card">
             <div class="item">
               <%= link_to "", pickup_url(pickup), class: "nav-link" %>
@@ -22,23 +22,31 @@
                     </li>
                     <li><br>
                     </li>
-                    <li>
-                      <p class='pickup-tag'>Status: <%= pickup.status %></p>
-                    </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <div class="interior-card">
-            <% if pickup.pending? %>
+          <div class="interior-description-card-pickup">
+            <div class="container mt-4 px-4">
+              <p class='pickup-tag'><strong>Status: </strong><%= pickup.status %></p>
+              <% if pickup.pending? %>
                     <div class="d-flex">
                       <%= simple_form_for pickup, method: :delete do |f| %>
                         <%= f.submit 'Cancel', class: 'btn btn-info' %>
                       <% end %>
                     </div>
                   <% end %>
-                  <p class='pickup-tag'><%= pickup.status %></p>
+              <br>
+              <div class="textarea-pickup">
+              <p><strong><%= pickup.user.nickname  %>:</strong></p>
+              <p><%= pickup.note %></p>
+              <% pickup.messages.each do |message| %>
+                <p><%= message.user.nickname %>: <%= message.content %></p>
+              <% end %>
+              <%= render 'messages/reply_form', pickup: pickup %>
+              </div>
+            </div>
           </div>
       </div>
     <% end %>

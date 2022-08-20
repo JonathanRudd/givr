@@ -40,13 +40,8 @@
   transition:0.2s ease all;
 }
 
-.checkbox-container {
+.checkbox {
   display: flex;
   padding: 6px;
-}
-
-.checkboxes .input {
-  align-items: center;
-  margin-right: 8px;
-  color: red;
+  gap: 6px;
 }

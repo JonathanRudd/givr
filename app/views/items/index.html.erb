@@ -2,12 +2,12 @@
   <%= form_with url: items_path, method: :get, class: "form" do |f| %>
     <%= f.text_field :title, placeholder: "What are you looking for?", class: "field" %>
     <%= f.text_field :address, placeholder: "location", class: "field"  %>
-    <button class="tag-button" type="button" data-toggle="collapse" data-target="#div1">
-      Tags
+    <button class="tag-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <i class="fa fa-caret-down" aria-hidden="true"></i> Tags
     </button>
     <%= f.submit "Search", class: "form-button" %>
-    <div class="collapse.show" id="div1">
-      <div class="checkbox-container">
+    <div class="collapse" id="collapseExample">
+  <div class="checkbox">
         <%= f.collection_check_boxes :tag_list, ActsAsTaggableOn::Tag.most_used(10), :name, :name %>
       </div>
     </div>

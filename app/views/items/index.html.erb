@@ -1,13 +1,22 @@
-<%= form_with url: items_path, method: :get, class: "form" do |f| %>
-  <%= f.label :tag, "Search by tag:", class: "label" %>
-  <%= f.text_field :tag, placeholder: 'furniture', class: "field"  %>
-  <%= f.label :title, "Search by item:", class: "label" %>
-  <%= f.text_field :title, placeholder: 'sofa', class: "field"  %>
-  <%= f.submit "Search", class: "form-button" %>
-<% end %>
+<div class="search-bar">
+  <%= form_with url: items_path, method: :get, class: "form" do |f| %>
+    <%= f.text_field :title, placeholder: "What are you looking for?", class: "field" %>
+    <%= f.text_field :address, placeholder: "location", class: "field"  %>
+    <button class="tag-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <i class="fa fa-caret-down" aria-hidden="true"></i> Tags
+    </button>
+    <%= f.submit "Search", class: "form-button" %>
+    <div class="collapse" id="collapseExample">
+  <div class="checkbox">
+        <%= f.collection_check_boxes :tag_list, ActsAsTaggableOn::Tag.most_used(10), :name, :name %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <div class="top-menu">
   <h2><%= @items.count %> results</h2>
 </div>
-
-<%= render 'shared/cards' %>
+<div class="cards-container">
+  <%= render 'shared/cards' %>
+</div>

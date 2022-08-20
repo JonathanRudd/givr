@@ -14,10 +14,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def my_items
-    @items = policy_scope(Item).where(user_id: current_user.id)
-    authorize @items
-  end
+  # def my_items
+  #   @items = policy_scope(Item).where(user_id: current_user.id)
+  #   authorize @items
+  # end
 
   def show
     @item = Item.find(params[:id])
@@ -25,8 +25,21 @@ class ItemsController < ApplicationController
     authorize @item
     @markers = [{
       lat: @item.user.latitude,
-      lng: @item.user.longitude
+      lng: @item.user.longitude,
+      # info_window: render_to_string(partial: "info_window", locals: { item: item })
     }]
+    # @recommendation_markers = [
+    #   {
+    #     lat: 35.6360,
+    #     lng: 139.7079
+    #   },
+    #   {
+    #     lat: 35.6270,
+    #     lng: 139.7082
+    #   },
+    # ]
+
+    # @all_markers = @markers + @recommendation_markers
   end
 
   def new
@@ -39,7 +52,7 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
     authorize @item
     if @item.save
-      redirect_to items_path, notice: 'New item registered'
+      redirect_to dashboard_path, notice: 'New item registered'
     else
       render :new
     end

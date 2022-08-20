@@ -9,7 +9,6 @@
       <%= f.input :tag_list, as: :check_boxes, wrapper_html: {class: "column-checkboxes", style: "columns: 100px 4; column-rule: 0px solid"}, label: "", collection: ActsAsTaggableOn::Tag.most_used(10).map {|tag| tag.name} %>
     </div>
     <%# Won´t save, even when not below the checklist input. Raise shows array before save %>
-
     <%# <%= f.input :tag_list, label: "Other category:", hint: "Add your tags, separated by commas" %>
 
     <div class="container mb-4">

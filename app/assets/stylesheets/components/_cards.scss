@@ -239,3 +239,30 @@ position: relative;
 .min-height {
   min-height: 75vh;
 }
+
+
+// wide cards for give away on dashboard
+
+.wide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 60rem);
+  gap: 2rem;
+}
+
+.wide-card {
+  height: 20rem;
+  width: 60rem;
+  display: flex;
+  margin: 18px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.interior-card {
+  width: 20rem;
+}
+
+.interior-description-card {
+  width: 40rem;
+}

@@ -15,6 +15,8 @@ puts "Destroying all items"
 Item.destroy_all
 puts "Destroying all users"
 User.destroy_all
+puts "Destroying all messages"
+Message.destroy_all
 
 puts "creating Keanu and 5 other users"
 
@@ -113,11 +115,17 @@ puts "creating 10 pickups"
   item_ids = Item.all.pluck(:id)
   # enum_times = [1, 2, 3]
 
-  Pickup.create!(
+ pickup = Pickup.create!(
     user_id: user_ids.sample,
     item_id: item_ids.sample,
     note: Faker::Lorem.sentences(number: 1)[0],
     time: rand(0..1),
     date: Faker::Date.between(from: Date.today, to: 1.week.from_now)
+  )
+
+  Message.create!(
+    user: pickup.item.user,
+    pickup: pickup,
+    content: "Hi!!! I need this item. How is the condition??"
   )
 end

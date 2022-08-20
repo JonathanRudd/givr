@@ -30,6 +30,14 @@ class PickupsController < ApplicationController
   end
 
   def update
+    @pickup = Pickup.find(params[:id])
+
+    if @pickup.update(pickup_params)
+      authorize @pickup
+      redirect_to pickups_path
+    else
+      render :new
+    end
   end
 
   def destroy

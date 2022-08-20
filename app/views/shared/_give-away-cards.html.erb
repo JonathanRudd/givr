@@ -41,7 +41,6 @@
         <div class="container">
           <p><%= %></p>
           <% if item.pickup %>
-            <p><%= "button" %></p>
             <% if item.pickup.pending? %>
               <div class="d-flex">
                 <%= simple_form_for item.pickup do |f| %>
@@ -53,8 +52,14 @@
                   <%= f.submit 'Reject', class: 'btn btn-light' %>
                 <% end %>
               </div>
-            <% else %>
-              <!-- Display Status-->
+            <% end %>
+            <% if item.pickup.accepted? %>
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+            <% if item.pickup.rejected? %>
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+            <% if item.pickup.cancelled? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
           <% end %>

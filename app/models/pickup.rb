@@ -3,4 +3,5 @@ class Pickup < ApplicationRecord
   belongs_to :item
   enum time: { AM: 0, PM: 1}
   enum status: { Pending: 0, Accept: 1, Reject: 2}
+  has_many :messages
 end

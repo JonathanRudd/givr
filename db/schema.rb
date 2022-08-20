@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2022_08_20_013814) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "pickup_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pickup_id"], name: "index_messages_on_pickup_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "pickups", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -116,6 +126,8 @@ ActiveRecord::Schema.define(version: 2022_08_20_013814) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
+  add_foreign_key "messages", "pickups"
+  add_foreign_key "messages", "users"
   add_foreign_key "pickups", "items"
   add_foreign_key "pickups", "users"
   add_foreign_key "taggings", "tags"

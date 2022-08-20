@@ -1,28 +1,65 @@
-<%# this is a currently a copy of _cards %>
-
-<div class="outer-container">
-  <div class="grid">
-    <% @items.each do |item| %>
-      <div class="item">
-      <%= link_to "", item_url(item), class: "nav-link" %>
+<div class="tabcontent">
+  <%# started working on card style below %>
+  <% @my_items.each do |item| %>
+    <div class="wide-card">
+      <div class="interior-card">
+        <div class="item">
+          <%= link_to "", item_url(item), class: "nav-link" %>
           <% if item.images.attached?%>
             <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
           <% else %>
             <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
           <% end %>
-        <div class="item-overlay">
-        <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
-          <div class="item-body">
-            <ul>
-              <li><p><strong>Description</strong></p></li>
-              <li id="item-desc"><p><%= item.description.truncate(50) %></p></li>
-              <li><br></li>
-              <li><p><strong>Pick this up</strong><p></li>
-              <li><p><%= item.timeframe %></p></li>
-            </ul>
+          <div class="item-overlay">
+            <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
+            <div class="item-body">
+              <ul>
+                <li>
+                  <p><strong>Categories</strong></p>
+                </li>
+                <li id="item-desc">
+                  <p><%= item.tag_list %></p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
+      <div class="interior-description-card">
+        <div class="container">
+          <p><%= item.description %></p>
+          <p>location: <%=  item.user.address%></p>
+          <p><strong>Pick this up:</strong></p>
+          <p><%= item.timeframe %></p>
+          <p><strong>Note:</strong></p>
+          <% if item.pickup %>
+            <p><%= item.pickup.note %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="interior-card">
+        <div class="container">
+          <p><%= %></p>
+          <% if item.pickup %>
+            <p><%= "button" %></p>
+            <% if item.pickup.pending? %>
+              <div class="d-flex">
+                <%= simple_form_for item.pickup do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                  <%= f.submit 'Accept', class: 'btn btn-info' %>
+                <% end %>
+                <%= simple_form_for item.pickup do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                  <%= f.submit 'Reject', class: 'btn btn-light' %>
+                <% end %>
+              </div>
+            <% else %>
+              <!-- Display Status-->
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

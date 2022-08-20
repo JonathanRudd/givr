@@ -1,5 +1,6 @@
 class PickupsController < ApplicationController
   def index
+    @pickups = policy_scope(Pickup).includes(:item)
   end
 
   def show
@@ -19,7 +20,7 @@ class PickupsController < ApplicationController
     authorize @pickup
 
     if @pickup.save
-      redirect_to pickups_path
+      redirect_to dashboard_path, notice: 'You have requested to pick up an item'
     else
       render :new
     end
@@ -29,6 +30,14 @@ class PickupsController < ApplicationController
   end
 
   def update
+    @pickup = Pickup.find(params[:id])
+
+    if @pickup.update(pickup_params)
+      authorize @pickup
+      redirect_to pickups_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -37,7 +46,7 @@ class PickupsController < ApplicationController
   private
 
   def pickup_params
-    params.require(:pickup).permit(:item_id, :user_id, :note, :status, :time, :date)
+    params.require(:pickup).permit(:item_id, :user_id, :note, :time, :date)
   end
 
 end

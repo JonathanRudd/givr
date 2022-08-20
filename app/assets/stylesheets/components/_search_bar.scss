@@ -1,0 +1,52 @@
+.search-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  background-color: rgba(137, 137, 137, 0.1);
+}
+
+.form {
+  padding: 12px;
+}
+
+.field {
+  width: 400px;
+  //border-radius: 10px;
+  border-width: 1px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.form-button {
+  //border-radius: 10px;
+  background-color: rgb(150, 213, 150);
+  border-width: 1px;
+  margin-left: 6px;
+  margin-right: 6px;
+  transition:0.2s ease all;
+}
+
+.form-button:hover {
+  background-color: rgb(179, 255, 179);
+}
+
+.tag-button {
+  //border-radius: 10px;
+  background-color: rgb(111, 111, 111);
+  color: white;
+  border-width: 1px;
+  margin-left: 6px;
+  margin-right: 6px;
+  transition:0.2s ease all;
+}
+
+.checkbox-container {
+  display: flex;
+  padding: 6px;
+}
+
+.checkboxes .input {
+  align-items: center;
+  margin-right: 8px;
+  color: red;
+}

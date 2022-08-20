@@ -10,10 +10,18 @@ class Item < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_title,
     against: [ :title, :description ],
-    associated_against: {
-      user: [ :address ]
-    },
     using: {
       tsearch: { prefix: true }
     }
+
+  pg_search_scope :search_by_address,
+  associated_against: {
+    user: [ :address ]
+  },
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  pg_search_scope :search_by_tags,
+    against: [ :tag_list ]
 end

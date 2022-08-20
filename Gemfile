@@ -78,3 +78,4 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'acts-as-taggable-on', '~> 9.0'
 
 gem 'pg_search', '~> 2.3.0'
+gem 'bootstrap-sass'

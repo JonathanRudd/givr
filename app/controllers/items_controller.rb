@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
     @items = policy_scope(Item)
     if params[:title].present?
       @items = Item.search_by_title(params[:title])
+    elsif params[:address].present?
+      @items = Item.search_by_address(params[:address])
+    elsif params[:tag_list]&.second.present?
+      @items = Item.tagged_with(params[:tag_list])
     else
       @items = Item.all
     end

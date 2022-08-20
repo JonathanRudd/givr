@@ -5,9 +5,11 @@ class PagesController < ApplicationController
   end
 
   def my_dashboard
-    @my_items = policy_scope(Item).where(user_id: current_user.id)
+    @my_items = policy_scope(Item).includes(:tags, pickup: :messages,  images_attachments: :blob).where(user_id: current_user.id)
     authorize @my_items
-    @my_pickups = policy_scope(Pickup).where(user_id: current_user.id)
+    @my_pickups = policy_scope(Pickup).includes(item: :tags).where(user_id: current_user.id)
     authorize @my_pickups
+
+    @message = Message.new(user: current_user)
   end
 end

@@ -39,6 +39,7 @@
               <% item.pickup.messages.each do |message| %>
                 <%= message.content %>
               <% end %>
+              <%= render 'messages/reply_form', pickup: item.pickup %>
 
             <% end %>
           </div>

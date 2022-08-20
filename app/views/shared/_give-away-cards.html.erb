@@ -24,7 +24,7 @@
                 </ul>
               </div>
             </div>
-
+          </div>
         </div>
         <div class="interior-description-card">
           <div class="container">
@@ -35,6 +35,11 @@
             <p><strong>Note:</strong></p>
             <% if item.pickup %>
               <p><%= item.pickup.note %></p>
+
+              <% item.pickup.messages.each do |message| %>
+                <%= message.content %>
+              <% end %>
+
             <% end %>
           </div>
         </div>
@@ -65,3 +70,6 @@
     <% end %>
   </div>
 </div>
+
+
+

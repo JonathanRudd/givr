@@ -32,17 +32,16 @@
           <p>location: <%=  item.user.address%></p>
           <p><strong>Pick this up:</strong></p>
           <p><%= item.timeframe %></p>
-
-            <% if item.pickup %>
-              <div class="textarea">
-                <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
-                <p><%= item.pickup.note %></p>
-                <% item.pickup.messages.each do |message| %>
+          <% if item.pickup %>
+            <div class="textarea">
+              <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
+              <p><%= item.pickup.note %></p>
+              <% item.pickup.messages.each do |message| %>
                 <p><%= message.user.nickname %>: <%= message.content %></p>
               <% end %>
               <%= render 'messages/reply_form', pickup: item.pickup %>
-              </div>
-            <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="interior-card">
@@ -71,6 +70,3 @@
     </div>
   <% end %>
 </div>
-
-
-

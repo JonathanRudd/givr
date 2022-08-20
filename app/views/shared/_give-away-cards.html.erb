@@ -27,21 +27,26 @@
       </div>
       <div class="interior-description-card">
         <div class="container">
+          <p><%= %></p>
           <p><%= item.description %></p>
           <p>location: <%=  item.user.address%></p>
           <p><strong>Pick this up:</strong></p>
           <p><%= item.timeframe %></p>
-          <p><strong>Note:</strong></p>
-          <% if item.pickup %>
-            <p><%= item.pickup.note %></p>
-          <% end %>
+
+            <% if item.pickup %>
+              <div class="textarea">
+                <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
+                <p><%= item.pickup.note %></p>
+              </div>
+            <% end %>
+
         </div>
       </div>
       <div class="interior-card">
         <div class="container">
           <p><%= %></p>
           <% if item.pickup %>
-            <p><%= "button" %></p>
+            <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
             <% if item.pickup.pending? %>
               <div class="d-flex">
                 <%= simple_form_for item.pickup do |f| %>

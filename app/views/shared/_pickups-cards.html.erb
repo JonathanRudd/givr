@@ -22,23 +22,27 @@
                     </li>
                     <li><br>
                     </li>
-                    <li>
-                      <p class='pickup-tag'>Status: <%= pickup.status %></p>
-                    </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <div class="interior-card">
-            <% if pickup.pending? %>
+            <div class="container mt-4 px-4">
+              <p class='pickup-tag'><strong>Status: </strong><%= pickup.status %></p>
+              <% if pickup.pending? %>
                     <div class="d-flex">
                       <%= simple_form_for pickup, method: :delete do |f| %>
                         <%= f.submit 'Cancel', class: 'btn btn-info' %>
                       <% end %>
                     </div>
                   <% end %>
-                  <p class='pickup-tag'><%= pickup.status %></p>
+              <br>
+              <div class="textarea">
+                <p><strong><%= pickup.user.nickname %>:</strong></p>
+                <p><%= pickup.note %></p>
+              </div>
+            </div>
           </div>
       </div>
     <% end %>

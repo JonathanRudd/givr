@@ -60,8 +60,14 @@
                   <%= f.submit 'Reject', class: 'btn btn-light' %>
                 <% end %>
               </div>
-            <% else %>
-              <!-- Display Status-->
+            <% end %>
+            <% if item.pickup.accepted? %>
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+            <% if item.pickup.rejected? %>
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+            <% if item.pickup.cancelled? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
           <% end %>

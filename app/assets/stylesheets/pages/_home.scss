@@ -3,6 +3,7 @@ body, html {
   width: 100%;
   height: 100%;
 }
+
 /* Sets the images in place*/
 .parallax {
   position: relative;
@@ -10,8 +11,8 @@ body, html {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  display : flex;
-  align-items : center;
+  display: flex;
+  align-items: center;
 }
 /* Trouble with styling for cards hence below*/
 .parallax3 {

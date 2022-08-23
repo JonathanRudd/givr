@@ -40,6 +40,10 @@
   transition:0.2s ease all;
 }
 
+[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
 .checkbox {
   display: flex;
   padding: 6px;

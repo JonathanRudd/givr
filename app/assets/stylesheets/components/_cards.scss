@@ -7,6 +7,7 @@
 
 .grid {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(auto-fit, 16rem);
   gap: 2rem;
 }

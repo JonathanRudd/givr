@@ -13,3 +13,19 @@
 .navbar-lewagon .navbar-brand img {
   width: 80px;
 }
+
+.nav-header {
+  display: flex;
+  align-items: flex-end;
+}
+
+.nav-text {
+  text-decoration: none;
+  color: white;
+  font-size: 42px;
+  font-family: Impact;
+}
+
+.nav-text:hover {
+  color: rgb(56, 125, 94);
+}

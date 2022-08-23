@@ -41,6 +41,10 @@ class PickupsController < ApplicationController
   end
 
   def destroy
+    @pickup = Pickup.find(params[:id])
+    authorize @pickup
+    @pickup.destroy
+    redirect_to dashboard_path
   end
 
   private

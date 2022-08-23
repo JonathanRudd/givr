@@ -6,17 +6,20 @@
 </ul>
 
 <div class="tabcontent">
-  <div id="my-items" data-tab-content class="active">
-    <h6>My Give Away Items</h6>
-    <p><%= @my_items.count %> results</p>
-    <%= render 'shared/give-away-cards' %>
+    <%# <div id="my-items" data-tab-content class=<%= params[:pickup] ? '' : 'active'> %>
+  <div id="my-items" data-tab-content class='active'>
+      <h6>My Give Away Items</h6>
+      <p><%= @my_items.count %> results</p>
+      <%= render 'shared/give-away-cards' %>
   </div>
 </div>
 
+
 <div class="tabcontent">
-  <div id="my-pickups" data-tab-content>
-    <h6>My Pickups</h6>
-    <p><%= @my_pickups.count %> results</p>
-    <%= render 'shared/pickups-cards' %>
-  </div>
+  <%# <div id=“my-pickups” data-tab-content class=<%= 'active' if params[:pickup] %>
+    <div id="my-pickups" data-tab-content>
+      <h6>My Pickups</h6>
+      <p><%= @my_pickups.count %> results</p>
+      <%= render 'shared/pickups-cards' %>
+    </div>
 </div>

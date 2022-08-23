@@ -20,6 +20,9 @@
                 <li id="item-desc">
                   <p><%= item.tag_list %></p>
                 </li>
+                <% if item.images.attached?%>
+                  <p><%= cl_image_path(item.images.first, options = {}) %></p>
+                <% end %>
               </ul>
             </div>
           </div>

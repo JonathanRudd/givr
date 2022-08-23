@@ -36,6 +36,8 @@ class ItemsController < ApplicationController
     # ]
 
     # @all_markers = @markers + @recommendation_markers
+    @item = Item.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

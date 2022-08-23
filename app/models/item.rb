@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_many_attached :images
 
   acts_as_taggable_on :tags
+  has_many :comments, dependent: :destroy
 
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?

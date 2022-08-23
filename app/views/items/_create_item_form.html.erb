@@ -1,9 +1,18 @@
 <div class="container">
-  <%= simple_form_for @item do |f| %>
+  <%= simple_form_for @item, remote: true do |f| %>
     <%= f.input :title, placeholder: 'Item name', error_html: { id: 'password_error' }%>
     <%= f.input :description, as: :text, placeholder: 'Features, weight, dimensions, etc' %>
     <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
+
+    <%# <input type="file" id="file" name="file" /> %>
     <%= f.input :images, as: :file, input_html: { multiple: true }%>
+    <%# call imagga service on image and send to categories checklist collection - AJAX %>
+    <%# OR call it in controller after the item is saved  %>
+    <% if item.images.attached? %>
+      <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
+    <% end %>
+    </div>
+
     <h6>Categories:</h6>
     <div class="container" style="" >
       <%= f.input :tag_list, as: :check_boxes, wrapper_html: {class: "column-checkboxes", style: "columns: 100px 4; column-rule: 0px solid"}, label: "", collection: ActsAsTaggableOn::Tag.most_used(10).map {|tag| tag.name} %>

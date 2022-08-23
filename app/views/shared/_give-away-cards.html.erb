@@ -20,7 +20,6 @@
                 <li id="item-desc">
                   <p><%= item.tag_list %></p>
                 </li>
-
               </ul>
             </div>
           </div>
@@ -51,8 +50,9 @@
       <div class="interior-card">
         <div class="container">
 
+<%# imagga cl url? %>
               <% if item.images.attached?%>
-                <p><%= cl_image_path(item.images[0].to_s, options = {}) %></p>
+                <p><%= cl_image_path(item.images[0].key, options = {}) %></p>
               <% end %>
 
           <% if item.pickup %>

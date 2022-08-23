@@ -20,9 +20,7 @@
                 <li id="item-desc">
                   <p><%= item.tag_list %></p>
                 </li>
-                <% if item.images.attached?%>
-                  <p><%= cl_image_path(item.images.first, options = {}) %></p>
-                <% end %>
+
               </ul>
             </div>
           </div>
@@ -52,7 +50,11 @@
       </div>
       <div class="interior-card">
         <div class="container">
-          <p><%= %></p>
+
+              <% if item.images.attached?%>
+                <p><%= cl_image_path(item.images[0].to_s, options = {}) %></p>
+              <% end %>
+
           <% if item.pickup %>
             <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
             <% if item.pickup.pending? %>
@@ -67,6 +69,7 @@
                 <% end %>
               </div>
             <% end %>
+
             <% if item.pickup.accepted? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
@@ -77,6 +80,9 @@
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
           <% end %>
+
+
+
         </div>
       </div>
     </div>

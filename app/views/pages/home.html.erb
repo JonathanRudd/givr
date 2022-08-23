@@ -1,19 +1,21 @@
 <!-- First parallax for the landing -->
-<div class="parallax img1">
-  <div class="par">Don't throw your loved items out,<br>
-  give them a second chance and save the planet!<br>
-<!-- Button to sign up -->
-    <div class="col-lg-12 space" style="text-align:center">
-      <%= link_to "Sign up", new_user_session_path, class: "button" %>
+<% unless current_user %>
+  <div class="parallax img1">
+    <div class="par">Don't throw your loved items out,<br>
+    give them a second chance and save the planet!<br>
+  <!-- Button to sign up -->
+      <div class="col-lg-12 space" style="text-align:center">
+        <%= link_to "Sign up", new_user_session_path, class: "button" %>
+      </div>
     </div>
   </div>
-</div>
-<div class="line-break">
-</div>
-<!-- Second parallax -->
-<div class="parallax img2">
-  <div class="par" style="z-index: 1">Save space.<br>Easily upload items you no longer need.<br>Arrange a pick up date.</div>
-</div>
+  <div class="line-break">
+  </div>
+  <!-- Second parallax -->
+  <div class="parallax img2">
+    <div class="par" style="z-index: 1">Save space.<br>Easily upload items you no longer need.<br>Arrange a pick up date.</div>
+  </div>
+<% end %>
 <div class="line-break">
   <a href"#" class="arrow-container">
     <div class="arrow-line"></div>

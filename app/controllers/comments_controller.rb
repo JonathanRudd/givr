@@ -21,6 +21,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:question)
+    params.require(:comment).permit(:question).merge(item_id: params[:item_id])
   end
 end

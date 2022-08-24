@@ -30,12 +30,24 @@
         data-mapbox-markers-value="<%= @markers.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
-<div class>
-  <p>This is Comment Section:</p>
-  <%= link_to 'Back', items_path %> |
-  <%= simple_form_for [ @item, @comment ] do |f| %>
-    <%= f.input :question %>
-    <%= f.submit "Submit comment", class: "btn btn-primary" %>
-  <% end %>
-</div>
+
+<section id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="comment">
+        <p><strong>Comments:</strong>
+        <%= render @item.comments.order(id: :desc) %></p>
+        <%= render partial: 'comments/form', locals: { item: @item }%>
+          </div><!--End Comment-->
+          </div><!--End col -->
+          </div><!-- End row -->
+      <div class="row">
+        <div class="col-6">
+            
+        </div><!-- End col -->
+      </div><!--End Row -->
+    </div><!--End Container -->
+  </section><!-- end App -->
+
 </div>

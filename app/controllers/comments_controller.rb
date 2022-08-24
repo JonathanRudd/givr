@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => :create
   def new
     @item = Item.find(params[:item_id])
     @comment = Comment.new
@@ -21,6 +22,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:question).merge(item_id: params[:item_id])
+    params.require(:comment).permit(:question, :parent_id).merge(item_id: params[:item_id])
   end
 end

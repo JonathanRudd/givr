@@ -50,8 +50,9 @@ class ItemsController < ApplicationController
     if @item.save
       image_url = ActionController::Base.helpers.cl_image_path(@item.images[0].key)
       results = ImaggaService.new.get_classes(image_url)
-      # how to update in controller?
-      @item.tag_list.add(results.first)
+
+      @item.tag_list.add(results)
+      # lets define a standard lag array and only pick out ones that match
       @item.save
       redirect_to dashboard_path, notice: 'New item registered'
     else

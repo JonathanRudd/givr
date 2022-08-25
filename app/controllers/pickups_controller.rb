@@ -20,7 +20,7 @@ class PickupsController < ApplicationController
     authorize @pickup
 
     if @pickup.save
-      redirect_to dashboard_path, notice: 'You have requested to pick up an item'
+      redirect_to dashboard_path(tab: "pickup"), notice: 'You have requested to pick up an item'
     else
       render :new
     end

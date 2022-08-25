@@ -49,8 +49,10 @@ class ItemsController < ApplicationController
     authorize @item
     if @item.save
       image_url = ActionController::Base.helpers.cl_image_path(@item.images[0].key)
-      ImaggaService.new.get_classes(image_url)
-      @item.tag_list
+      results = ImaggaService.new.get_classes(image_url)
+      # how to update in controller?
+      @item.tag_list.add(results.first)
+      @item.save
       redirect_to dashboard_path, notice: 'New item registered'
     else
       render :new

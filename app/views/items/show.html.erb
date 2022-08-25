@@ -24,10 +24,30 @@
   </div>
     <%# for Map %>
 </div>
-<div class="card card-description card-description-center">
-  <div style="width: 100%; height: 600px;"
+<div class="card card-description card-description-left">
+  <div style="width: 100%; height: 700px;"
         data-controller="mapbox"
         data-mapbox-markers-value="<%= @markers.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
+
+<section id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="comment">
+        <p><strong>Comments:</strong>
+        <%= render @item.comments.where(parent_id: nil).includes(:user).order(id: :desc) %></p>
+        <%= render partial: 'comments/form', locals: { item: @item, parent: nil}%>
+          </div><!--End Comment-->
+          </div><!--End col -->
+          </div><!-- End row -->
+      <div class="row">
+        <div class="col-6">
+            
+        </div><!-- End col -->
+      </div><!--End Row -->
+    </div><!--End Container -->
+  </section><!-- end App -->
+
 </div>

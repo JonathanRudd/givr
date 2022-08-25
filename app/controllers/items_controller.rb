@@ -37,6 +37,8 @@ class ItemsController < ApplicationController
     # ]
 
     # @all_markers = @markers + @recommendation_markers
+    @item = Item.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -56,12 +58,26 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    authorize @item
   end
 
   def update
+    @item = Item.find(params[:id])
+
+    if @item.update(item_params)
+      authorize @item
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    authorize @item
+    @item.destroy
+    redirect_to dashboard_path
   end
 
   private

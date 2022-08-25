@@ -31,7 +31,8 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    # record.user == user
+    true
   end
 
   def my_dashboard?

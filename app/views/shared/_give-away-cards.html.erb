@@ -28,7 +28,10 @@
       <div class="interior-description-card">
         <div class="container">
           <p><%= %></p>
-          <p><%= item.description %></p>
+          <p><%= item.description %>
+            <%= link_to 'edit', edit_item_path(item) %>
+            <%= link_to 'delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
           <p>location: <%=  item.user.address%></p>
           <p><strong>Pick this up:</strong></p>
           <p><%= item.timeframe %></p>
@@ -60,8 +63,14 @@
                   <%= f.submit 'Reject', class: 'btn btn-light' %>
                 <% end %>
               </div>
-            <% else %>
-              <!-- Display Status-->
+            <% end %>
+            <% if item.pickup.accepted? %>
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+            <% if item.pickup.rejected? %>
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+            <% if item.pickup.cancelled? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
           <% end %>

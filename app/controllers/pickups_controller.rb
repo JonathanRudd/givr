@@ -34,7 +34,7 @@ class PickupsController < ApplicationController
 
     if @pickup.update(pickup_params)
       authorize @pickup
-      redirect_to pickups_path
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -50,7 +50,6 @@ class PickupsController < ApplicationController
   private
 
   def pickup_params
-    params.require(:pickup).permit(:item_id, :user_id, :note, :time, :date)
+    params.require(:pickup).permit(:item_id, :user_id, :note, :time, :date, :status)
   end
-
 end

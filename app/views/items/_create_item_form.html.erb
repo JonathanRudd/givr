@@ -1,5 +1,5 @@
 <div class="container">
-  <%= simple_form_for item do |f| %>
+  <%= simple_form_for @item do |f| %>
     <%= f.input :title, placeholder: 'Item name', error_html: { id: 'password_error' }%>
     <%= f.input :description, as: :text, placeholder: 'Features, weight, dimensions, etc' %>
     <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
@@ -10,11 +10,9 @@
     </div>
     <%# Won´t save, even when not below the checklist input. Raise shows array before save %>
     <%# <%= f.input :tag_list, label: "Other category:", hint: "Add your tags, separated by commas" %>
-
     <div class="container mb-4">
       <%= f.submit class: "btn btn-success mt-4" %>
     </div>
   <% end %>
 </div>
-
 <%#   %>

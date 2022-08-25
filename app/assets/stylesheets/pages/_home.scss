@@ -3,6 +3,7 @@ body, html {
   width: 100%;
   height: 100%;
 }
+
 /* Sets the images in place*/
 .parallax {
   position: relative;
@@ -10,8 +11,8 @@ body, html {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  display : flex;
-  align-items : center;
+  display: flex;
+  align-items: center;
 }
 /* Trouble with styling for cards hence below*/
 .parallax3 {
@@ -35,7 +36,7 @@ body, html {
 
 .img3 {
   background-image: url("save-money.jpg");
-  height: 106%;
+  height: 110vh;
 }
 /* Text boxes*/
 .par {
@@ -66,10 +67,67 @@ body, html {
 }
 /* Center the button in parallax 3*/
 .space {
-  margin-top: 24px;
+  margin: 12px;
 }
 
+/*Button styles*/
+.button {
+  text-decoration: none;
+  background-color: rgb(89,176,137);
+  padding: 8px;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  transition: 0.3s all ease-out;
+}
 
+.button:hover {
+  color: rgb(255, 255, 255);
+  transition: all .2s ease-in-out;
+  background-color: rgb(53, 135, 99);
+}
+
+// For the dividers between each img
+.line-break {
+  height: 4px;
+  background: rgb(89,176,137)
+}
+
+// Bouncing arrow
+.arrow-container {
+  position: fixed;
+  bottom: 0;
+  right: 48.5%;
+  width: 50px;
+  height: 50px;
+  animation: bounce 2s ease-in-out infinite ;
+}
+
+.arrow-line {
+  left: 36px;
+  position:absolute;
+  width: 50px;
+  border: 4px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  border-radius: 50px;
+  transform: rotate(145deg);
+}
+
+.arrow-line2{
+  position:absolute;
+  width: 50px;
+  border: 4px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  border-radius: 50px;
+  transform: rotate(-145deg);
+}
+
+@keyframes bounce {
+    0%   {bottom: -20px;}
+    50%  {bottom: 0px;}
+    100% {bottom: -20px;}
+}
+
+//Jonathan's form
 .column-checkboxes {
   columns: 100px 4;
   column-rule: 1px solid

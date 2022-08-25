@@ -4,13 +4,12 @@
     <%= f.input :description, as: :text, placeholder: 'Features, weight, dimensions, etc' %>
     <%= f.input :timeframe, required: false, placeholder: 'What times are you typically available to give this item' %>
 
-    <%# <input type="file" id="file" name="file" /> %>
     <%= f.input :images, as: :file, input_html: { multiple: true }%>
-    <%# call imagga service on image and send to categories checklist collection - AJAX %>
+    <%# call imagga service on image and send to categories checklist collection - AJAX - not possible when Item not yet created %>
     <%# OR call it in controller after the item is saved  %>
-    <% if item.images.attached? %>
-      <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
-    <% end %>
+    <%# <% if item.images.attached? %>
+      <%# <img src="<%= cl_image_path(item.images.first.key) %>
+    <%# <% end %>
     </div>
 
     <h6>Categories:</h6>

@@ -21,15 +21,22 @@
       <p><i class="fa-solid fa-hourglass-end"></i><%= @item.timeframe %></p>
       <%= link_to "Pickup Request", new_item_pickup_path(@item), class: "btn btn-large btn-success" %>
     </div>
+
   </div>
     <%# for Map %>
 </div>
+
 <div class="card card-description card-description-left">
   <div style="width: 100%; height: 700px;"
-        data-controller="mapbox"
-        data-mapbox-markers-value="<%= @markers.to_json %>"
-        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
+
+<div class="recommendation card">
+  <p>You might also like</p>
+  <%= render 'shared/recommend-cards' %>
+</div>
 
 <section id="app">
     <div class="container">
@@ -44,10 +51,9 @@
           </div><!-- End row -->
       <div class="row">
         <div class="col-6">
-            
+
         </div><!-- End col -->
       </div><!--End Row -->
     </div><!--End Container -->
   </section><!-- end App -->
-
 </div>

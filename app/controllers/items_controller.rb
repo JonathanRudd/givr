@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
       lng: @item.user.longitude,
       # info_window: render_to_string(partial: "info_window", locals: { item: item })
     }]
+    @related_items = @item.find_related_tags
     # @recommendation_markers = [
     #   {
     #     lat: 35.6360,
@@ -36,6 +37,8 @@ class ItemsController < ApplicationController
     # ]
 
     # @all_markers = @markers + @recommendation_markers
+    @item = Item.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

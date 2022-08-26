@@ -51,10 +51,11 @@ class ItemsController < ApplicationController
       image_url = ActionController::Base.helpers.cl_image_path(@item.images[0].key)
       results = ImaggaService.new.get_classes(image_url)
 
-      @item.tag_list.add(results)
-      # lets define a standard lag array and only pick out ones that match
+      @item.tag_list.add(results.first(5))
+      # lets define a standard tag array and only pick out ones that match
+
       @item.save
-      redirect_to dashboard_path, notice: 'New item registered'
+      redirect_to @item, notice: 'New item registered'
     else
       render :new
     end

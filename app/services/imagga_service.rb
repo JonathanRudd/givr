@@ -27,7 +27,11 @@ class ImaggaService
     response = RestClient.get "https://api.imagga.com/v2/tags?image_url=#{image_url}", { :Authorization => auth }
     response = JSON.parse(response)
     classes = response["result"]["tags"].map { |tag| tag["tag"]["en"]}
-    p "Recognition result:", classes
+    # p "Recognition result:", classes
+    # tag_array = ["kitchen", "apparel", "tools", "home entertainment", "game", "furniture", "game equipment", "leisure", "exercise", "sport"]
+    # final_classes = classes.reject!  do |tag|
+    #   tag_array.include?(tag)
+    # end
     classes
   end
 

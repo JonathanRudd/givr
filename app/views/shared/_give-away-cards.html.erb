@@ -50,11 +50,6 @@
       <div class="interior-card">
         <div class="container">
 
-<%# imagga cl url? %>
-              <% if item.images.attached?%>
-                <p><%= cl_image_path(item.images[0].key, options = {}) %></p>
-              <% end %>
-
           <% if item.pickup %>
             <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
             <% if item.pickup.pending? %>

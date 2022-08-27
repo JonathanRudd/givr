@@ -1,5 +1,11 @@
 <div class="comments-show-page">
-  <%= image_tag comment.user.avatar, class: "givr-avatar", style: "margin-right: 8px;" %>
+
+  <% if comment.user.avatar.present? %>
+    <%= image_tag comment.user.avatar, class: "givr-avatar", style: "margin-right: 8px;" %>
+    <% else %>
+    <%= image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;" %>
+  <% end %>
+
   <div class="comments-show-items">
     <h5><%= comment.user.nickname.present? ? comment.user.nickname : comment.user.email %></h5>
     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>

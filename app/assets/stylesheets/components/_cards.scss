@@ -278,10 +278,10 @@ position: relative;
 }
 
 .interior-description-card-pickup {
-  width: 60rem;
+  width: 90rem;
 }
 .textarea {
-  overflow-y: scroll;
+  // overflow-y: scroll;
   width: 100%;
   height: 120px;
   padding: 12px 20px;
@@ -293,7 +293,7 @@ position: relative;
 }
 
 .textarea-pickup {
-  overflow-y: scroll;
+  // overflow-y: scroll;
   width: 100%;
   height: 160px;
   padding: 12px 20px;
@@ -302,4 +302,9 @@ position: relative;
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+  display: inline-block;
+}
+
+.messaging-pickup {
+  display: flex;
 }

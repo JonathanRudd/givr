@@ -38,14 +38,23 @@
                     </div>
                   <% end %>
               <br>
+
+
+            <div class="messaging-pickup"><%# This is the comment view and reply area %>
               <div class="textarea-pickup">
-              <p><strong><%= pickup.user.nickname  %>:</strong></p>
-              <p><%= pickup.note %></p>
-              <% pickup.messages.each do |message| %>
-                <p><%= message.user.nickname %>: <%= message.content %></p>
-              <% end %>
-              <%= render 'messages/reply_form', pickup: pickup %>
+                <p><%= pickup.user.nickname %></p>
+                <p><%= pickup.note %></p>
+                <% pickup.messages.each do |message| %>
+                  <p><%= message.user.nickname.present? ? message.user.nickname : message.user.email %></p>
+                  <p><%= message.content %></p>
+                <% end %>
               </div>
+
+              <div class="reply-pickup">
+                <%= render 'messages/reply_form', pickup: pickup %>
+              </div>
+            </div><%# This is the comment view and reply area %>
+
             </div>
           </div>
       </div>

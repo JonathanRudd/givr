@@ -1,11 +1,11 @@
 <h1>My Page</h1>
 <ul class="tabs">
-  <li data-tab-target="#my-items" class="<%= params[:tab] == 'item' ? 'active tab' : 'tab' %>">My Items</li>
+  <li data-tab-target="#my-items" class="<%= params[:tab] != 'pickup' ? 'active tab' : 'tab' %>">My Items</li>
   <li data-tab-target="#my-pickups" class="<%= params[:tab] == 'pickup' ? 'active tab' : 'tab' %>">My Pickups</li>
 </ul>
 
 <div class="tabcontent">
-  <div id="my-items" data-tab-content class="<%= params[:tab] == 'item' ? 'active' : '' %>">
+  <div id="my-items" data-tab-content class="<%= params[:tab] != 'pickup' ? 'active' : '' %>">
     <h6>My Give Away Items</h6>
     <p><%= @my_items.count %> results</p>
     <%= render 'shared/give-away-cards' %>

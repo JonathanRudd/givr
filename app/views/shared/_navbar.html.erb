@@ -11,13 +11,16 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%= link_to "Items", items_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Give away", new_item_path, class: "nav-link" %>
+        </li>
+        <li class="dropdown">
+          <%= image_tag "/assets/notification_bell.png", class: "dropdown-toggle", id: "navbarDropdown", data: { "bs-toggle": "dropdown" }, 'aria-expanded': false, style: "width: 35px; height: 35px; border-radius: 50%" %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+            </div>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.avatar.present? %>

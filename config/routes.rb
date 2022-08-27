@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # get 'giveaways', to: 'items#my_items', as: 'giveaways'
 
   get 'dashboard', to: 'pages#my_dashboard', as: 'dashboard'
+
 end

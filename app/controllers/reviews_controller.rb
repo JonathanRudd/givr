@@ -6,14 +6,15 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    item = Item.find(params[:item_id])
     @review = Review.new(review_params)
     authorize @review
-    @review.user = current_user
+    @review.user = item.pickup.user
     if @review.save
-      redirect_to new_review_path
+      redirect_to dashboard_path
     else
       flash[:alert] = "Something is not right."
-      render :new
+      redirect_to dashboard_path
     end
   end
 

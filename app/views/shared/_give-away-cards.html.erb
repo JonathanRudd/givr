@@ -49,7 +49,7 @@
       </div>
       <div class="interior-card">
         <div class="container">
-          <p><%= %></p>
+
           <% if item.pickup %>
             <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
             <% if item.pickup.pending? %>
@@ -64,6 +64,7 @@
                 <% end %>
               </div>
             <% end %>
+
             <% if item.pickup.accepted? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
@@ -74,6 +75,9 @@
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
           <% end %>
+
+
+
         </div>
       </div>
     </div>

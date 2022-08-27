@@ -1,8 +1,7 @@
 class ReviewsController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     @review = Review.new
-    authorize @item
     authorize @review
   end
 

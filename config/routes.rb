@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#my_dashboard', as: 'dashboard'
 
-  resources :reviews, only: [:new, :create]
+  # get 'users/:id/reviews/new', to: 'reviews#new', as: 'review'
+  get 'users/:id/reviews/create', to: 'reviews#create', as: 'review'
 
   get 'notification', to: 'notifications#update_seen_redirect', as: 'notification'
 

@@ -14,5 +14,4 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#my_dashboard', as: 'dashboard'
 
-  get 'notification', to: 'notifications#update_seen_redirect', as: 'notification'
 end

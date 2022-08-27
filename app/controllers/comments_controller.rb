@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
     comment.item = item
     authorize comment
     if comment.save
-      Notification.create!(comment: comment)
       redirect_to item_url(item), notice: 'Comment Succesfully Added!!!!'
     else
       redirect_to item_url(item), notice: 'Comment Reply Failed!!!!'

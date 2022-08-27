@@ -19,14 +19,7 @@
         <li class="dropdown">
           <%= image_tag "/assets/notification_bell.png", class: "dropdown-toggle", id: "navbarDropdown", data: { "bs-toggle": "dropdown" }, 'aria-expanded': false, style: "width: 35px; height: 35px; border-radius: 50%" %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <% user_item_comments = [] %>
-                <% current_user.items.each{|item| user_item_comments += item.comments} %>
-                <% user_item_comments.map {|comment| comment.notification}.each do |notification| %>
-                <div class="dropdown-item">
-                  <%= link_to "#{notification.comment.user.nickname} commented on #{notification.comment.item.title}", notification_path(notification_id: notification.id)%>
-                  <br>
-                </div>
-                <% end %>
+                
             </div>
         </li>
         <li class="nav-item dropdown">

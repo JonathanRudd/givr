@@ -11,6 +11,6 @@ class User < ApplicationRecord
 
   ##...Avatar Attachment...##
   has_one_attached :avatar
-  has_many :notifications
+
 
 end

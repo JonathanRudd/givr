@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create]
 
   get 'notification', to: 'notifications#update_seen_redirect', as: 'notification'
->>>>>>> master
+
 end

@@ -17,9 +17,9 @@
         <p><span class="h5 font-weight-bold">Categories:</span class="h5"></p>
         <p><%= @item.tag_list %></p>
         <p><span class="h5 font-weight-bold">Address:</span class="h5"></p>
-        <p><i class="fa-solid fa-hourglass-end"></i><%= @item.user.address %></p>
-        <p><span class="h5 font-weight-bold">Pickup Time Frame:</span class="h5"></p>
-        <p><i class="fa-solid fa-hourglass-end"></i><%= @item.timeframe %></p>
+        <p><i class="fa fa-map-pin"></i> <%= @item.user.address %></p>
+        <p><span class="h5 font-weight-bold"> Pickup Time Frame:</span class="h5"></p>
+        <p><i class="fa-solid fa-hourglass-end"></i> <%= @item.timeframe %></p>
         <%= link_to "Pickup Request", new_item_pickup_path(@item), class: "btn btn-large btn-success" %>
       </div>
 
@@ -39,10 +39,10 @@
       <div class="container">
         <div class="row">
           <div class="col-6">
-            <div class="comment">
+            <div class="comment" style="width: 200px;">
           <p><strong>Comments:</strong>
-          <%= render @item.comments.where(parent_id: nil).includes(:user).order(id: :desc) %></p>
           <%= render partial: 'comments/form', locals: { item: @item, parent: nil}%>
+          <%= render @item.comments.where(parent_id: nil).includes(:user).order(id: :desc) %></p>
             </div><!--End Comment-->
             </div><!--End col -->
             </div><!-- End row -->

@@ -9,14 +9,14 @@
             <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
           <% end %>
         <div class="item-overlay">
-        <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
+        <h5  id="person1" aria-hidden="true"><%= item.title.truncate(50) %></h5>
           <div class="item-body">
             <ul>
               <li><p><strong>Description</strong></p></li>
               <li id="item-desc"><p><%= item.description.truncate(50) %></p></li>
               <li><br></li>
               <li><p><strong>Pick this up</strong><p></li>
-              <li><p><%= item.timeframe %></p></li>
+              <li><p><%= item.timeframe.truncate(25) %></p></li>
             </ul>
           </div>
         </div>

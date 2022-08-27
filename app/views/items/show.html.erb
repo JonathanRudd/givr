@@ -30,7 +30,13 @@
         <p><i class="fa-solid fa-hourglass-end"></i><%= @item.user.address %></p>
         <p><span class="h5 font-weight-bold">Pickup Time Frame:</span class="h5"></p>
         <p><i class="fa-solid fa-hourglass-end"></i><%= @item.timeframe %></p>
-        <%= link_to "Pickup Request", new_item_pickup_path(@item), class: "btn btn-large btn-success" %>
+
+        <% if @item.user == current_user %>
+
+        <% else %>
+          <%= link_to "Pickup Request", new_item_pickup_path(@item), class: "btn btn-large btn-success" %>
+        <% end %>
+
       </div>
 
     </div>

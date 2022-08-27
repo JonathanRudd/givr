@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_24_131903) do
+ActiveRecord::Schema.define(version: 2022_08_27_021012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(version: 2022_08_24_131903) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pickup_id"], name: "index_messages_on_pickup_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "seen", default: false
   end
 
   create_table "pickups", force: :cascade do |t|

@@ -18,5 +18,4 @@ Rails.application.routes.draw do
   get 'users/:id/reviews/create', to: 'reviews#create', as: 'review'
 
   get 'notification', to: 'notifications#update_seen_redirect', as: 'notification'
-
 end

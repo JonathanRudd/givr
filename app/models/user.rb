@@ -12,4 +12,6 @@ class User < ApplicationRecord
 
   ##...Avatar Attachment...##
   has_one_attached :avatar
+
+
 end

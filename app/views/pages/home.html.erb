@@ -1,6 +1,10 @@
 <!-- First parallax for the landing -->
 <% unless current_user %>
   <div class="parallax img1">
+    <a href"#" class="arrow-container">
+      <div class="arrow-line"></div>
+      <div class="arrow-line2"></div>
+    </a>
     <div class="par">Don't throw your loved items out,<br>
     give them a second chance and save the planet!<br>
   <!-- Button to sign up -->
@@ -17,10 +21,6 @@
   </div>
 <% end %>
 <div class="line-break">
-  <a href"#" class="arrow-container">
-    <div class="arrow-line"></div>
-    <div class="arrow-line2"></div>
-  </a>
 </div>
 <!-- Third parallax -->
 <div class="parallax3 img3">
@@ -54,9 +54,9 @@
       </div>
     <% end %>
   </div>
+  </div>
 <!-- Button to index -->
   <div class="col-lg-12 space" style="text-align:center">
-  <br>
-    <%= link_to "See more give aways", items_path, class: "button" %>
+    <%= link_to "See more give aways", items_path, class: "home-button" %>
   </div>
 </div>

@@ -1,4 +1,4 @@
 class Notification < ApplicationRecord
-  belongs_to :comment, optional: true
-  belongs_to :message, optional: true
+  include Noticed::Model
+  belongs_to :recipient, polymorphic: true
 end

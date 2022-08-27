@@ -83,3 +83,5 @@ gem 'bootstrap-sass'
 gem "turbolinks_render"
 
 gem "mini_magick"
+
+gem "noticed", "~> 1.5"

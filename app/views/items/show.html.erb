@@ -14,13 +14,33 @@
         <h1 class="title-show"><%= @item.title %></h1>
         <p><span class="h5 font-weight-bold">Description:</span class="h5"></p>
         <p><%= @item.description %></p>
+
+        <%# <% flash.each do |type, msg| %>
+          <%# <div class="alert alert-info">
+            <%= msg %>
+          <%# </div>
+        <% end %>
+
         <p><span class="h5 font-weight-bold">Categories:</span class="h5"></p>
         <p><%= @item.tag_list %></p>
+
+        <% if @item.user == current_user %>
+          <p><%= link_to 'Not ok with our labels? Change them here', edit_item_path(@item) %></p>
+        <% end %>
+
+
+
         <p><span class="h5 font-weight-bold">Address:</span class="h5"></p>
         <p><i class="fa-solid fa-hourglass-end"></i><%= @item.user.address %></p>
         <p><span class="h5 font-weight-bold">Pickup Time Frame:</span class="h5"></p>
         <p><i class="fa-solid fa-hourglass-end"></i><%= @item.timeframe %></p>
-        <%= link_to "Pickup Request", new_item_pickup_path(@item), class: "btn btn-large btn-success" %>
+
+        <% if @item.user == current_user %>
+
+        <% else %>
+          <%= link_to "Pickup Request", new_item_pickup_path(@item), class: "btn btn-large btn-success" %>
+        <% end %>
+
       </div>
 
     </div>

@@ -78,7 +78,7 @@ User.create!(
 #   )
 # end
 
-seedtags = ["kitchen", "apparel", "tools", "home entertainment", "games", "furniture"]
+seedtags = ["kitchen", "apparel", "tools", "home entertainment", "games", "furniture", "sports"]
 
 puts "creating Keanus surfboard and 20 other items"
 

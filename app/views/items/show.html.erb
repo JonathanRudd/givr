@@ -39,9 +39,11 @@
       <div class="container">
         <div class="row">
           <div class="col-6">
-            <div class="comment" style="width: 200px;">
+            <div class="comment" style="width: 100%;">
+            <br>
           <p><strong>Comments:</strong>
           <%= render partial: 'comments/form', locals: { item: @item, parent: nil}%>
+          <br>
           <%= render @item.comments.where(parent_id: nil).includes(:user).order(id: :desc) %></p>
             </div><!--End Comment-->
             </div><!--End col -->

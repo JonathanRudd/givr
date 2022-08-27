@@ -1,17 +1,24 @@
-<article>
-<%= image_tag comment.user.avatar, style: "width: 40px; height: 40px; border-radius: 50%"%>
-<p><%= comment.question %></p>
-<small>by <%=comment.user.nickname %></small>
+<div class="comments-show-page">
+  <%= image_tag comment.user.avatar, class: "givr-avatar", style: "margin-right: 8px;" %>
+  <div class="comments-show-items">
+    <h5><%= comment.user.nickname.present? ? comment.user.nickname : comment.user.email %></h5>
+    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+  </div>
+</div>
+<div class="comment-area">
+  <small><i><%= comment.created_at %></i></small>
+  <p><%= comment.question %></p>
+</div>
 
-<a href="#" class="comment-form-display">reply</a>
-<div class="comment-form">
-  <%= render partial: 'comments/form', locals: { item: comment.item, parent: comment} %>
-</div>
-<hr />
-<div class="sub-comment">
-  <%= render comment.comments %>
-</div>
-</article>
+  <a href="#" class="comment-form-display">Reply</a>
+  <div class="comment-form">
+    <%= render partial: 'comments/form', locals: { item: comment.item, parent: comment} %>
+  </div>
+  <hr />
+  <div class="sub-comment">
+    <%= render comment.comments %>
+  </div>
+
 
 <script>
 document.querySelectorAll('.comment-form-display').forEach((el) => {el.addEventListener('click', (ev) => {

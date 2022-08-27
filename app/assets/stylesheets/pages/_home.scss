@@ -1,8 +1,8 @@
 /* Setting up the Parallax Standard for the Givr */
-body, html {
-  width: 100%;
-  height: 100%;
-}
+// body, html {
+//   width: 100%;
+//   height: 100%;
+// }
 
 /* Sets the images in place*/
 .parallax {
@@ -36,7 +36,7 @@ body, html {
 
 .img3 {
   background-image: url("save-money.jpg");
-  height: 110vh;
+  // height: 110vh;
 }
 /* Text boxes*/
 .par {
@@ -65,22 +65,24 @@ body, html {
   color: rgb(255, 255, 255);
   text-shadow: 0.1px 0.1px 0.1px black;
 }
-/* Center the button in parallax 3*/
+/* Center the home-button in parallax 3*/
 .space {
   margin: 12px;
 }
 
-/*Button styles*/
-.button {
+/*home-Button styles*/
+.home-button {
   text-decoration: none;
   background-color: rgb(89,176,137);
   padding: 8px;
   font-size: 20px;
   color: rgb(255, 255, 255);
   transition: 0.3s all ease-out;
+  margin: 16px;
+    display: inline-block;
 }
 
-.button:hover {
+.home-button:hover {
   color: rgb(255, 255, 255);
   transition: all .2s ease-in-out;
   background-color: rgb(53, 135, 99);

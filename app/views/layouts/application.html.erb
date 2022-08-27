@@ -11,9 +11,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
+<<<<<<< HEAD
+=======
     <title><%= meta_title %></title>
 <meta name="description" content="<%= meta_description %>">
 
@@ -33,12 +35,21 @@
 <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
 <meta name="twitter:image:src" content="<%= meta_image %>">
 
+>>>>>>> master
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+  <%= render 'shared/flashes' %>
+  <div class="page-frame-content">
+    <div class="page-frame-header">
+      <%= render 'shared/navbar' %>
+    </div>
+    <div class="page-frame-body">
       <%= yield %>
-    <%= render 'shared/footer' %>
+    </div>
+    <div class="page-frame-footer">
+      <%= render 'shared/footer' %>
+    </div>
+  </div>
   </body>
 </html>

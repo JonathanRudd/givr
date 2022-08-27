@@ -24,7 +24,11 @@
         <p><span class="h5 font-weight-bold">Categories:</span class="h5"></p>
         <p><%= @item.tag_list %></p>
 
-        <p><%= link_to 'Not ok with our labels? Change them here', edit_item_path(@item) %></p>
+        <% if @item.user == current_user %>
+          <p><%= link_to 'Not ok with our labels? Change them here', edit_item_path(@item) %></p>
+        <% end %>
+
+
 
         <p><span class="h5 font-weight-bold">Address:</span class="h5"></p>
         <p><i class="fa-solid fa-hourglass-end"></i><%= @item.user.address %></p>

@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 2022_08_27_055109) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "seen", default: false
+  end
+
   create_table "pickups", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false

@@ -1,11 +1,10 @@
 <div class="container">
   <%= simple_form_for [@item, @pickup] do |f| %>
     <%= f.input :date, as: :date, placeholder: 'Request Pick-up Date' %>
-    <%= f.input :time, as: :select, :collection => %w[AM PM] %>
-    <%# <%= f.input :time, as: :integer, placeholder: 'Request Pick-up Time eg. "AM", "PM", 09:00, etc' %>
+    <%= f.input :time, as: :select, :collection => ["Before_8_AM", "Morning_8_to_12", "Afternoon_12_to_4", "Evening_4_to_8", "After_8_PM"] %>
     <%= f.input :note, placeholder: 'Send a message to the Givr' %>
     <div class="container mb-4">
       <%= f.submit "Request to Pickup", class: "btn btn-success" %>
     </div>
-  <% end %>
+  <% end
 </div>

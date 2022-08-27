@@ -17,12 +17,18 @@ class PickupNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-  # def message
-  #   t(".message")
-  # end
+  def message
+    @item = Item.find(params[:pickup][:item_id])
+    @pickup = Pickup.find(params[:pickup][:id])
+    @user = User.find(@pickup.user_id)
+    "#{@user.nickname} send you a pickup request for #{@item.title.truncate_words(10)}"
+  end
   #
   # def url
   #   post_path(params[:post])
   # end
+  def url
+    dashboard_path(Item.find(params[:pickup][:item_id]))
+  end
   
 end

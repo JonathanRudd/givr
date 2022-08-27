@@ -16,12 +16,10 @@
         <li class="nav-item">
           <%= link_to "Give away", new_item_path, class: "nav-link" %>
         </li>
-        <li class="dropdown">
-          <%= image_tag "/assets/notification_bell.png", class: "dropdown-toggle", id: "navbarDropdown", data: { "bs-toggle": "dropdown" }, 'aria-expanded': false, style: "width: 35px; height: 35px; border-radius: 50%" %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                
-            </div>
-        </li>
+
+        <ul class="navbar-nav">
+          <%= render 'layouts/notifications' %>
+        </ul>
         <li class="nav-item dropdown">
           <% if current_user.avatar.present? %>
             <%= image_tag current_user.avatar, class: "givr-avatar dropdown-toggle", id: "navbarDropdown", data: { "bs-toggle": "dropdown" }, 'aria-expanded': false %>

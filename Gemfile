@@ -79,3 +79,5 @@ gem 'acts-as-taggable-on', '~> 9.0'
 
 gem 'pg_search', '~> 2.3.0'
 gem 'bootstrap-sass'
+
+gem "turbolinks_render"

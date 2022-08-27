@@ -33,7 +33,7 @@
               <% if pickup.pending? %>
                     <div class="d-flex">
                       <%= simple_form_for pickup, method: :delete do |f| %>
-                        <%= f.submit 'Cancel', class: 'btn btn-info' %>
+                        <%= f.submit 'Cancel', class: 'btn btn-danger' %>
                       <% end %>
                     </div>
                   <% end %>

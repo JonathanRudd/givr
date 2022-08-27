@@ -27,17 +27,22 @@
       </div>
       <div class="interior-description-card">
         <div class="container">
-          <p><%= %></p>
-          <p><%= item.description %>
+          <div class="flex-container">
+            <div class="flex-item">
+              <p><%= item.description %>
+            </div>
 
-            <%= link_to 'edit', edit_item_path(item), class: "button" %>
-            <%= link_to 'delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
-
-
-          </p>
+            </p>
+          </div>
           <p>location: <%=  item.user.address%></p>
           <p><strong>Pick this up:</strong></p>
           <p><%= item.timeframe %></p>
+
+              <div class="flex-item">
+                <%= link_to 'Edit', edit_item_path(item), class: "btn btn-warning" %>
+                <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+              </div>
+
           <% if item.pickup %>
             <div class="textarea">
               <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
@@ -59,11 +64,11 @@
               <div class="d-flex">
                 <%= simple_form_for item.pickup do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                  <%= f.submit 'Accept', class: 'btn btn-info' %>
+                  <%= f.submit 'Accept', class: 'btn btn-success' %>
                 <% end %>
                 <%= simple_form_for item.pickup do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                  <%= f.submit 'Reject', class: 'btn btn-light' %>
+                  <%= f.submit 'Reject', class: 'btn btn-danger' %>
                 <% end %>
               </div>
             <% end %>

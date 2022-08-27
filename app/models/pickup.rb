@@ -5,4 +5,6 @@ class Pickup < ApplicationRecord
   # enum time: { Before8: 1, Morning: 1, Afternoon: 2, Evening: 3, After8: 4 }
   enum status: { pending: 0, accepted: 1, rejected: 2, cancelled: 3}
   has_many :messages, dependent: :destroy
+
+  
 end

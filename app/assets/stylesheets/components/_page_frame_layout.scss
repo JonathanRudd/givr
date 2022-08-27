@@ -1,0 +1,10 @@
+.page-frame-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-frame-body {
+  flex-grow: 1;
+}

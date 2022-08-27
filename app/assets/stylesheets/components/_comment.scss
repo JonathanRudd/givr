@@ -3,12 +3,11 @@ body {
 }
 
 .card {
-  
+
   border: none;
   box-shadow: 5px 6px 6px 2px #e9ecef;
   border-radius: 4px;
 }
-
 
 .dots{
 
@@ -48,11 +47,9 @@ display: inline-block;
   cursor: pointer;
 }
 
-
 .form-check-input:focus{
   box-shadow: none;
 }
-
 
 .icons i{
 
@@ -69,7 +66,6 @@ display: inline-block;
 
 }
 
-
 .reply small:hover{
 
   color: green;
@@ -78,9 +74,41 @@ display: inline-block;
 }
 
 .sub-comment {
-  padding-left: 20px;
+  padding-left: 50px;
+
+  .comment-area {
+    background-color: rgb(239, 239, 239);
+  }
 }
 
 .comment-form {
   display: none;
+}
+
+.comments-show-page {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comments-show-items {
+  line-height: 4px;
+
+  h5 {
+    color: rgb(6, 50, 0);
+  }
+
+  i {
+    color: goldenrod;
+  }
+}
+
+.comment-area {
+  margin-top: 4px;
+  background-color: white;
+  padding: 8px;
+
+  i {
+    color: grey
+  }
 }

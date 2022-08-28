@@ -13,8 +13,13 @@ class User < ApplicationRecord
   ##...Avatar Attachment...##
   has_one_attached :avatar
 
+  # for notification
+  has_many :notifications, as: :recipient, dependent: :destroy
+
+
   def review_average
     ratings = self.reviews.pluck(:rating).compact
     ratings.sum / ratings.size
   end
+
 end

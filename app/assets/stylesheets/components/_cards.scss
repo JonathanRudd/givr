@@ -309,10 +309,11 @@ position: relative;
 
 .note {
   p {
-    background-color: rgb(200, 254, 200);
+    background-color: rgb(220, 255, 220);
     border-radius: 8px;
     padding: 8px;
-    border: solid 0.1px rgb(77, 160, 77)
+    border: solid 0.1px rgb(77, 160, 77);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -321,12 +322,16 @@ position: relative;
     background-color: rgb(220, 255, 220);
     border-radius: 8px;
     padding: 8px;
-    border: solid 0.1px rgb(77, 160, 77)
+    border: solid 0.1px rgb(77, 160, 77);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
   }
 }
 
 .message-btn {
   margin-left: 16px;
+  height: 40px;
+  width: 40px;
+  align-self: center;
 }
 
 .user-message-field {
@@ -334,4 +339,8 @@ position: relative;
     overflow-y: scroll;
     resize: none;
   }
+}
+
+.fa-paper-plane {
+  color: white;
 }

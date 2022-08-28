@@ -1,6 +1,8 @@
 <%= form_with(model: [pickup, @message]) do |f| %>
   <div class="user-message-field d-flex justify-content-between">
     <%= f.text_area :content, class: 'form-control', style: "height: 68px;" %>
-    <%= f.submit 'Submit', class: "message-btn btn btn-outline-primary", style: "height: 40px;" %>
+    <button type="submit" class="message-btn btn btn-success">
+      <p><i class="fa fa-paper-plane"></i></p>
+    </button>
   </div>
 <% end %>

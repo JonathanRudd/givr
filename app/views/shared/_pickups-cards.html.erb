@@ -45,9 +45,11 @@
               <div class="message">
                 <span class="d-flex">
                   <%= image_tag message.user.avatar, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.email}" %>
-                  <p class="message-content"><%= message.content %></p>
+                  <span>
+                    <p class="message-content"><%= message.content %></p>
+                    <p class="message-time"><%= message.created_at %></p>
+                  </span>
                 </span>
-                <p class= "message-time"><%= message.user.created_at %></p>
               </div>
             <% end %>
           </div><%# This is the comment view and reply area %>

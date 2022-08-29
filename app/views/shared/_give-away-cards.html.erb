@@ -1,53 +1,48 @@
 <div class="tabcontent">
   <%# started working on card style below %>
   <% @my_items.each do |item| %>
-    <div class="wide-card">
-      <div class="interior-card">
-        <div class="item">
-          <%= link_to "", item_url(item), class: "nav-link" %>
-          <% if item.images.attached?%>
-            <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
-          <% else %>
-            <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
-          <% end %>
-          <div class="item-overlay">
-            <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
-            <div class="item-body">
-              <ul>
-                <li>
-                  <p><strong>Categories</strong></p>
-                </li>
-                <li id="item-desc">
-                  <p><%= item.tag_list %></p>
-                </li>
-              </ul>
+    <div class="wide-card-giveaway">
+      <div class="d-flex main-card-body">
+        <div class="interior-card">
+          <div class="item">
+            <%= link_to "", item_url(item), class: "nav-link" %>
+            <% if item.images.attached?%>
+              <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
+            <% else %>
+              <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
+            <% end %>
+            <div class="item-overlay">
+              <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
+              <div class="item-body">
+                <ul>
+                  <li>
+                    <p><strong>Categories</strong></p>
+                  </li>
+                  <li id="item-desc">
+                    <p><%= item.tag_list %></p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="interior-description-card">
-        <div class="container">
-          <p><%= %></p>
-          <p><%= item.description %>
-                    <%= link_to 'Edit', edit_item_path(item), class: "flex-end btn btn-outline-warning" %>
-                    <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "flex-end btn btn-outline-danger" %>
-          </p>
-          <p>location: <%=  item.user.address%></p>
-          <p><strong>Pick this up:</strong></p>
-          <p><%= item.timeframe %></p>
-          <% if item.pickup %>
-            <div class="textarea">
-              <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
-              <p><%= item.pickup.note %></p>
-              <% item.pickup.messages.each do |message| %>
-                <p><%= message.user.nickname %>: <%= message.content %></p>
-              <% end %>
-              <%= render 'messages/reply_form', pickup: item.pickup %>
+        <div class="interior-description-card-pickup">
+          <div class="message-container mb-2">
+            <p>Location: <%=  item.user.address%></p>
+            <p>Your availability: <%= item.timeframe %></p>
+            <p><%= item.description %>
+                      <%= link_to 'Edit', edit_item_path(item), class: "flex-end btn btn-outline-warning" %>
+                      <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "flex-end btn btn-outline-danger" %>
+            </p>
             </div>
-          <% end %>
+
+
         </div>
       </div>
-      <div class="interior-card">
+
+    </div>
+
+      <div class="d-flex pick-up-info-footer">
         <div class="container">
 
           <% if item.pickup %>
@@ -83,10 +78,19 @@
             <% end %>
           <% end %>
 
-
-
         </div>
+        <div class="message-container d-flex mb-2">
+              <% if item.pickup %>
+                <div class="textarea">
+                  <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
+                  <p><%= item.pickup.note %></p>
+                  <% item.pickup.messages.each do |message| %>
+                    <p><%= message.user.nickname %>: <%= message.content %></p>
+                  <% end %>
+                  <%= render 'messages/reply_form', pickup: item.pickup %>
+                </div>
+              <% end %>
+            </div>
       </div>
-    </div>
   <% end %>
 </div>

@@ -270,6 +270,29 @@ position: relative;
   background-color: white;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
 }
+
+.wide-card-giveaway {
+  padding: 16px;
+  height: 22rem;
+  width: 95vw;
+  display: flex;
+  margin: 18px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.pick-up-info-footer {
+  height: auto;
+  width: 95vw;
+  display: flex;
+  margin: 18px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
 .interior-card {
   width: 30rem;
 }

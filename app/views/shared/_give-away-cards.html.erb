@@ -29,8 +29,8 @@
         <div class="container">
           <p><%= %></p>
           <p><%= item.description %>
-            <%= link_to 'edit', edit_item_path(item) %>
-            <%= link_to 'delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to 'Edit', edit_item_path(item), class: "flex-end btn btn-outline-warning" %>
+                    <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "flex-end btn btn-outline-danger" %>
           </p>
           <p>location: <%=  item.user.address%></p>
           <p><strong>Pick this up:</strong></p>

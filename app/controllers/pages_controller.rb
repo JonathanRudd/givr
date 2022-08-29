@@ -11,9 +11,5 @@ class PagesController < ApplicationController
     authorize @my_pickups
 
     @message = Message.new(user: current_user)
-
-    
   end
-
-
 end

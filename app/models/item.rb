@@ -26,7 +26,4 @@ class Item < ApplicationRecord
 
   pg_search_scope :search_by_tags,
     against: [ :tag_list ]
-
-  has_noticed_notifications model_name: 'Notification'
-  has_many :notifications, through: :user, dependent: :destroy
 end

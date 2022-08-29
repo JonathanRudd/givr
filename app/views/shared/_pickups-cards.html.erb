@@ -49,7 +49,7 @@
             <% pickup.messages.each do |message| %>
               <div class="message">
                 <span class="d-flex">
-                  <%= image_tag message.user.avatar, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.email}" %>
+                  <%= image_tag message.user.avatar, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
                   <span>
                     <p class="message-content"><%= message.content %></p>
                     <p class="message-time"><%= message.created_at %></p>

@@ -308,12 +308,17 @@ position: relative;
 }
 
 .note {
-  p {
+  .message-content {
     background-color: rgb(220, 255, 220);
     border-radius: 8px;
     padding: 8px;
     border: solid 0.1px rgb(77, 160, 77);
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 2px;
+  }
+  .message-time {
+    color: gray;
+    font-size: 14px;
   }
 }
 

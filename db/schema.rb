@@ -100,6 +100,15 @@ ActiveRecord::Schema.define(version: 2022_08_27_073805) do
     t.index ["user_id"], name: "index_pickups_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
     t.string "taggable_type"
@@ -156,5 +165,6 @@ ActiveRecord::Schema.define(version: 2022_08_27_073805) do
   add_foreign_key "messages", "users"
   add_foreign_key "pickups", "items"
   add_foreign_key "pickups", "users"
+  add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "tags"
 end

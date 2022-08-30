@@ -46,56 +46,56 @@
     </div>
 
       <div class="d-flex pick-up-info-footer">
-        <div class="container">
-          <div class="pickup-info-container">
-            <% if item.pickup %>
-              <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
-              <% if item.pickup.pending? %>
-                <div class="d-flex">
-                  <%= simple_form_for item.pickup do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                    <%= f.submit 'Accept', class: 'btn btn-info' %>
-                  <% end %>
-
-                  <%= simple_form_for item.pickup do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                    <%= f.submit 'Reject', class: 'btn btn-light' %>
-                  <% end %>
-                </div>
-              <% end %>
-
-            <% if item.pickup.accepted? %>
-              <p class='pickup-tag'><%= item.pickup.status %></p>
-              <div class="d-flex">
-                <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
-                  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
-                  <%= f.submit 'Rate', class: 'btn btn-info' %>
-                <% end %>
-              </div>
-            <% end %>
-            <% if item.pickup.rejected? %>
-              <p class='pickup-tag'><%= item.pickup.status %></p>
-            <% end %>
-            <% if item.pickup.cancelled? %>
-              <p class='pickup-tag'><%= item.pickup.status %></p>
-            <% end %>
-          <% end %>
-          </div>
-        </div>
-        <div class="pickup-info-container">
-          <div class="message-container d-flex mb-2">
+          <ul>
+            <div class="container">
+              <div class="pickup-info-container">
                 <% if item.pickup %>
-                  <div class="textarea">
-                    <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
-                    <p><%= item.pickup.note %></p>
-                    <% item.pickup.messages.each do |message| %>
-                      <p><%= message.user.nickname %>: <%= message.content %></p>
+                  <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
+                  <% if item.pickup.pending? %>
+                    <div class="d-flex">
+                      <%= simple_form_for item.pickup do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                        <%= f.submit 'Accept', class: 'btn btn-info' %>
+                      <% end %>
+                      <%= simple_form_for item.pickup do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                        <%= f.submit 'Reject', class: 'btn btn-light' %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% if item.pickup.accepted? %>
+                  <p class='pickup-tag'><%= item.pickup.status %></p>
+                  <div class="d-flex">
+                    <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
+                      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
+                      <%= f.submit 'Rate', class: 'btn btn-info' %>
                     <% end %>
-                    <%= render 'messages/reply_form', pickup: item.pickup %>
                   </div>
                 <% end %>
-          </div>
-        </div>
+                <% if item.pickup.rejected? %>
+                  <p class='pickup-tag'><%= item.pickup.status %></p>
+                <% end %>
+                <% if item.pickup.cancelled? %>
+                  <p class='pickup-tag'><%= item.pickup.status %></p>
+                <% end %>
+              <% end %>
+              </div>
+            </div>
+            <div class="pickup-info-container">
+              <div class="message-container d-flex mb-2">
+                    <% if item.pickup %>
+                      <div class="textarea-pickup">
+                        <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
+                        <p><%= item.pickup.note %></p>
+                        <% item.pickup.messages.each do |message| %>
+                          <p><%= message.user.nickname %>: <%= message.content %></p>
+                        <% end %>
+                        <%= render 'messages/reply_form', pickup: item.pickup %>
+                      </div>
+                    <% end %>
+              </div>
+            </div>
+          </ul>
       </div>
   <% end %>
 </div>

@@ -1,4 +1,4 @@
-<h1>My Page</h1>
+<div class="dashboard-user-title"><h2><%= current_user.nickname.present? ? current_user.nickname : current_user.email %>'s dashboard</h2></div>
 <ul class="tabs">
   <li data-tab-target="#my-items" class="<%= params[:tab] != 'pickup' ? 'active tab' : 'tab' %>">My Items</li>
   <li data-tab-target="#my-pickups" class="<%= params[:tab] == 'pickup' ? 'active tab' : 'tab' %>">My Pickups</li>
@@ -6,16 +6,20 @@
 
 <div class="tabcontent">
   <div id="my-items" data-tab-content class="<%= params[:tab] != 'pickup' ? 'active' : '' %>">
-    <h6>My Give Away Items</h6>
-    <p><%= @my_items.count %> results</p>
+    <div class="result-text">
+      <h3>My Give Away Items</h3>
+      <h4><%= @my_items.count %> <%= @my_items.count == 1 ? 'result' : 'results' %></h4>
+    </div>
     <%= render 'shared/give-away-cards' %>
   </div>
 </div>
 
 <div class="tabcontent">
   <div id="my-pickups" data-tab-content class="<%= params[:tab] == 'pickup' ? 'active' : '' %>">
-    <h6>My Pickups</h6>
-    <p><%= @my_pickups.count %> results</p>
+    <div class="result-text">
+      <h3>My Pickups</h3>
+      <h4><%= @my_pickups.count %> <%= @my_pickups.count == 1 ? 'result' : 'results' %></h4>
+    </div>
     <%= render 'shared/pickups-cards' %>
   </div>
 </div>

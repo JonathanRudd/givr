@@ -15,7 +15,7 @@
 </div>
 
 <div class="top-menu">
-  <h2><%= @items.count %> results</h2>
+  <h2><%= @items.count %> <%= @items.count == 1 ? 'result' : 'results' %></h2>
 </div>
 <div class="cards-container body--container-filler">
   <%= render 'shared/cards' %>

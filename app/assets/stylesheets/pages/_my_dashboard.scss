@@ -23,20 +23,28 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(89,176,137);
+  border-bottom-width: medium;
+  margin-top: -48px;
 }
 
 .tab {
+  border-radius: 16px 16px 0 0;
   cursor: pointer;
   padding: 10px;
+  background-color: rgb(230, 230, 230);
+  position: relative;
+  border: 3px solid rgb(89,176,137);
+  margin-bottom: -3px;
 }
 
 .tab.active {
-  background-color: rgb(150, 213, 150);
+  background-color: rgb(247,246,246);
+  border-bottom: none;
 }
 
 .tab:hover {
-  background-color: rgb(179, 255, 179);
+  background-color: rgb(89,176,137);
 }
 
 .tab-content {
@@ -44,7 +52,28 @@ body {
   margin-right: 20px;
 }
 
+.dashboard-user-title {
+  display: table;
+  margin: 0 auto;
+  padding: 8px;
+}
 
+.result-text {
+  display: flex;
+  justify-content: space-between;
+
+  h4, h3 {
+    margin-top: 16px;
+  }
+
+  h3 {
+    margin-left: 16px;
+  }
+
+  h4 {
+    margin-right: 32px;
+  }
+}
 
 // .card {
 //   margin: 24px;

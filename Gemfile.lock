@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/bantitout/ratyrate.git
+  revision: 88a9b281f8fabd2c761ca9560c829c17d57f3598
+  branch: patch-1
+  specs:
+    ratyrate (1.2.2.alpha)
+
+GIT
   remote: https://github.com/faker-ruby/faker.git
   revision: 73df1cf8b0614db0364bb4e374f004562236a597
   branch: master
@@ -358,6 +365,7 @@ DEPENDENCIES
   pundit
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6, >= 6.1.6.1)
+  ratyrate!
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
@@ -376,4 +384,4 @@ RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
-   2.3.14
+   2.3.10

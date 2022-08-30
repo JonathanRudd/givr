@@ -69,10 +69,7 @@
             <% if item.pickup.accepted? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
               <div class="d-flex">
-                <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
-                  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
-                  <%= f.submit 'Rate', class: 'btn btn-info' %>
-                <% end %>
+                <%= rating_for item.pickup.user, 'friendliness' %>
               </div>
             <% end %>
             <% if item.pickup.rejected? %>

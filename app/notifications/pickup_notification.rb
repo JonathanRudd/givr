@@ -28,7 +28,8 @@ class PickupNotification < Noticed::Base
   #   post_path(params[:post])
   # end
   def url
-    dashboard_path(Item.find(params[:pickup][:item_id]))
+    # dashboard_path(Item.find(params[:pickup][:item_id]))
+    dashboard_path(from: "notification")
   end
   
 end

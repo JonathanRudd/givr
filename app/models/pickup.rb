@@ -5,8 +5,7 @@ class Pickup < ApplicationRecord
   # enum time: { Before8: 1, Morning: 1, Afternoon: 2, Evening: 3, After8: 4 }
   enum status: { pending: 0, accepted: 1, rejected: 2, cancelled: 3}
   has_many :messages, dependent: :destroy
-<<<<<<< HEAD
-=======
+
 
   after_create_commit :notify_recipient
   before_destroy :cleanup_notifications
@@ -22,5 +21,4 @@ class Pickup < ApplicationRecord
     notifications_as_pickup.destroy.all
   end
 
->>>>>>> 72cc446... notification for pickups is done
 end

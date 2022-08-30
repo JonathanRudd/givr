@@ -12,14 +12,12 @@ class User < ApplicationRecord
 
   ##...Avatar Attachment...##
   has_one_attached :avatar
-<<<<<<< HEAD
 
   def review_average
     ratings = self.reviews.pluck(:rating).compact
     ratings.sum / ratings.size
   end
-=======
   # for notification
   has_many :notifications, as: :recipient, dependent: :destroy
->>>>>>> 72cc446... notification for pickups is done
+
 end

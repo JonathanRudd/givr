@@ -39,9 +39,13 @@
           <div class="textarea-pickup"><%# This is the comment view and reply area %>
             <div class="note d-flex">
               <span class="d-flex">
-                <%= image_tag pickup.user.avatar, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
+                <% if pickup.user.avatar.attached? %>
+                  <%= image_tag pickup.user.avatar, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
+                <% else %>
+                <%= image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;" %>
+                <% end %>
                 <span>
-                  <p class="message-content"><%= pickup.note %></p>
+                  <p class="message-content"><%= pickup.note || "" %></p>
                   <p class="message-time"><%= pickup.created_at %></p>
                 </span>
               </span>

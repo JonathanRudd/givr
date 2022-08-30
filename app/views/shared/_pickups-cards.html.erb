@@ -42,7 +42,7 @@
                 <% if pickup.user.avatar.attached? %>
                   <%= cl_image_tag pickup.user.avatar.key, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
                 <% else %>
-                  <%= cl_image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;" %>
+                  <%= image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;" %>
                 <% end %>
                 <span>
                   <p class="message-content"><%= pickup.note || "" %></p>
@@ -56,7 +56,7 @@
                   <% if pickup.user.avatar.attached? %>
                     <%= cl_image_tag message.user.avatar.key, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
                   <% else %>
-                    <%= cl_image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;" %>
+                    <%= image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;" %>
                   <% end %>
                     <span>
                       <p class="message-content"><%= message.content %></p>

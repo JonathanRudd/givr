@@ -50,21 +50,21 @@
             <div class="container">
               <div class="pickup-info-container">
                 <% if item.pickup %>
-                  <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
+                  <p><%= item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email %> sent you a request for this item</p>
                   <% if item.pickup.pending? %>
                     <div class="d-flex">
                       <%= simple_form_for item.pickup do |f| %>
-                        <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
                         <%= f.submit 'Accept', class: 'btn btn-info' %>
                       <% end %>
                       <%= simple_form_for item.pickup do |f| %>
-                        <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'Rejected'} %>
                         <%= f.submit 'Reject', class: 'btn btn-light' %>
                       <% end %>
                     </div>
                   <% end %>
                 <% if item.pickup.accepted? %>
-                  <p class='pickup-tag'><%= item.pickup.status %></p>
+                  <p class='pickup-tag'>&nbsp<%= item.pickup.status %></p>
                   <div class="d-flex">
                     <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
                       <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>

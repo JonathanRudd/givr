@@ -17,4 +17,7 @@ class User < ApplicationRecord
     ratings = self.reviews.pluck(:rating).compact
     ratings.sum / ratings.size
   end
+  # for notification
+  has_many :notifications, as: :recipient, dependent: :destroy
+
 end

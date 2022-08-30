@@ -280,7 +280,9 @@ position: relative;
   height: 22rem;
   width: 95vw;
   display: flex;
-  margin: 18px;
+  margin-top: 18px;
+  margin-left: 18px;
+  margin-right: 18px;
   border-radius: 5px;
   background-color: white;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
@@ -290,7 +292,8 @@ position: relative;
   height: auto;
   width: 95vw;
   display: flex;
-  margin: 18px;
+  margin-left: 18px;
+  margin-right: 18px;
   border-radius: 5px;
   background-color: black;
   color: white;
@@ -299,6 +302,10 @@ position: relative;
 
 .interior-card {
   width: 30rem;
+}
+
+.interior-card-giveaways {
+  width: 20rem;
 }
 
 .interior-description-card {
@@ -383,4 +390,10 @@ position: relative;
 
 .fa-paper-plane {
   color: white;
+}
+
+.message-container {
+  display: flex;
+  width: 60rem;
+  justify-content: space-between;
 }

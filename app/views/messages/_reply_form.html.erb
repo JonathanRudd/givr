@@ -1,11 +1,8 @@
-<div class="card ml-5">
-  <div class="card-body">
-    <%= form_with(model: [pickup, @message]) do |f| %>
-      <div class="form-group">
-        <%= f.label 'Reply' %>
-        <%= f.text_area :content, class: 'form-control' %>
-      </div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
-    <% end %>
+<%= form_with(model: [pickup, @message]) do |f| %>
+  <div class="user-message-field d-flex justify-content-between">
+    <%= f.text_area :content, class: 'form-control', style: "height: 68px;" %>
+    <button type="submit" class="message-btn">
+      <p><i class="fa fa-paper-plane"></i></p>
+    </button>
   </div>
-</div>
+<% end %>

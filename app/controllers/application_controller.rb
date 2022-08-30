@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_paramaters, if: :devise_controller?
-  before_action :set_notifications, if: :current_user
 
   include Pundit
 
@@ -25,12 +24,6 @@ class ApplicationController < ActionController::Base
   # avatar
   def configure_permitted_paramaters
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:current_password, :avatar)}
-  end
-
-  def set_notifications
-    notifications = Notification.where(recipient: current_user).newest_first.limit(9)
-    @unread = notifications.unread
-    @read = notifications.read
   end
 end
 

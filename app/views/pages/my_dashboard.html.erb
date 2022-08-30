@@ -1,4 +1,6 @@
+
 <div class="dashboard-user-title"><h2><%= current_user.nickname.present? ? current_user.nickname : current_user.email %>'s dashboard</h2></div>
+
 <ul class="tabs">
   <li data-tab-target="#my-items" class="<%= params[:tab] != 'pickup' ? 'active tab' : 'tab' %>">My Items</li>
   <li data-tab-target="#my-pickups" class="<%= params[:tab] == 'pickup' ? 'active tab' : 'tab' %>">My Pickups</li>

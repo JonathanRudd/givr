@@ -29,15 +29,16 @@
         <div class="interior-description-card-pickup">
           <div class="desc-button-container mb-2">
             <div class="flex-item">
-              <p>Location: <%=  item.user.address%></p>
+              <p><strong>Location:</strong> <%=  item.user.address%></p>
             </div>
             <div class="flex-item">
               <%= link_to 'Edit', edit_item_path(item), class: "flex-end btn btn-outline-warning m-2" %>
               <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "flex-end btn btn-outline-danger m-2" %>
             </div>
             </div>
-            <p>Your availability: <%= item.timeframe %></p>
-            <p>Description: <%= item.description %>
+            <p><strong>Your availability:</strong> <%= item.timeframe %></p>
+            <br>
+            <p><strong>Description:</strong> <%= item.description %>
 
         </div>
       </div>
@@ -46,22 +47,22 @@
 
       <div class="d-flex pick-up-info-footer">
         <div class="container">
+          <div class="pickup-info-container">
+            <% if item.pickup %>
+              <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
+              <% if item.pickup.pending? %>
+                <div class="d-flex">
+                  <%= simple_form_for item.pickup do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                    <%= f.submit 'Accept', class: 'btn btn-info' %>
+                  <% end %>
 
-          <% if item.pickup %>
-            <p><%= item.pickup.user.nickname %> sent you a request for this item</p>
-            <% if item.pickup.pending? %>
-              <div class="d-flex">
-                <%= simple_form_for item.pickup do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                  <%= f.submit 'Accept', class: 'btn btn-info' %>
-                <% end %>
-
-                <%= simple_form_for item.pickup do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                  <%= f.submit 'Reject', class: 'btn btn-light' %>
-                <% end %>
-              </div>
-            <% end %>
+                  <%= simple_form_for item.pickup do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                    <%= f.submit 'Reject', class: 'btn btn-light' %>
+                  <% end %>
+                </div>
+              <% end %>
 
             <% if item.pickup.accepted? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
@@ -79,20 +80,22 @@
               <p class='pickup-tag'><%= item.pickup.status %></p>
             <% end %>
           <% end %>
-
+          </div>
         </div>
-        <div class="message-container d-flex mb-2">
-              <% if item.pickup %>
-                <div class="textarea">
-                  <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
-                  <p><%= item.pickup.note %></p>
-                  <% item.pickup.messages.each do |message| %>
-                    <p><%= message.user.nickname %>: <%= message.content %></p>
-                  <% end %>
-                  <%= render 'messages/reply_form', pickup: item.pickup %>
-                </div>
-              <% end %>
-            </div>
+        <div class="pickup-info-container">
+          <div class="message-container d-flex mb-2">
+                <% if item.pickup %>
+                  <div class="textarea">
+                    <p><strong><%= item.pickup.user.nickname  %>:</strong></p>
+                    <p><%= item.pickup.note %></p>
+                    <% item.pickup.messages.each do |message| %>
+                      <p><%= message.user.nickname %>: <%= message.content %></p>
+                    <% end %>
+                    <%= render 'messages/reply_form', pickup: item.pickup %>
+                  </div>
+                <% end %>
+          </div>
+        </div>
       </div>
   <% end %>
 </div>

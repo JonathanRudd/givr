@@ -51,6 +51,9 @@
 
 .checkbox {
   display: flex;
-  padding: 8px;
-  gap: 8px;
+  margin-top: 8px;
+  label {
+    margin-right: 16px;
+    margin-left: 4px;
+  }
 }

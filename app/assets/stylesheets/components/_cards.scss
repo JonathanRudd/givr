@@ -290,13 +290,25 @@ position: relative;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-
 .item-description-card {
   padding: 16px;
+  background-color: rgb(244,244,244);
+  border-radius: 5px;
+  margin-right: 8px;
 }
 
 .user-interactions {
   padding: 16px;
+  width: 15rem;
+  background-color: rgb(244,244,244);
+  border-radius: 5px;
+  margin-left: 8px;
+  .pickup-tag {
+    display:table-cell;
+    padding: 8px;
+    background-color: rgb(160, 255, 160);
+    border-radius: 8px;
+  }
 }
 
 .message-card {
@@ -339,7 +351,7 @@ position: relative;
 }
 
 .interior-card-giveaway {
-  width: 200px;
+  width: 250px;
 }
 
 .interior-description-card {
@@ -352,25 +364,42 @@ position: relative;
   height: 100%;
 }
 
-.user-interactions {
-  width: 15rem;
-  .pickup-tag {
-    display:table-cell;
-    padding: 8px;
-    background-color: rgb(160, 255, 160);
-    border-radius: 8px;
-  }
-}
-
 .edit-delete {
   display: flex;
   justify-content: space-around;
   margin-top: 12px;
 
   .btn{
+
     width: 96px;
     height: 36px;
   }
+}
+
+.accept-reject {
+  display: flex;
+  justify-content: space-around;
+  margin: 8px;
+  .accept {
+    background-color: rgb(89,176,137);
+    margin-right: 4px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  .accept:hover{
+    background-color: rgb(116, 226, 176);
+  }
+  .reject {
+    background-color: rgb(231, 101, 101);
+    margin-left: 4px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  .reject:hover{
+    background-color: rgb(239, 136, 136);
+    }
 }
 
 .textarea {
@@ -470,7 +499,6 @@ position: relative;
     resize: none;
   }
 }
-
 
 .fa-paper-plane {
   color: white;

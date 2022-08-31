@@ -276,7 +276,7 @@ position: relative;
 
 .wide-card-giveaway {
   padding: 16px;
-  height: 22rem;
+  height: 25.2rem;
   width: 95vw;
   display: flex;
   margin-top: 18px;
@@ -299,6 +299,16 @@ position: relative;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.message-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-container-items {
+  width: 600px;
+}
+
 .interior-card {
   width: 30rem;
 }
@@ -314,7 +324,25 @@ position: relative;
 .interior-description-card-pickup {
   width: 100rem;
   margin-left: 16px;
+  height: 100%;
 }
+
+.interior-description-card-item {
+  width: 40rem;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 12px;
+
+  .btn{
+    width: 112px;
+  }
+}
+
 .textarea {
   overflow-y: scroll;
   width: 100%;
@@ -331,6 +359,21 @@ position: relative;
   overflow-y: scroll;
   width: 100%;
   height: 180px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  display: inline-block;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.textarea-item {
+  overflow-y: scroll;
+  width: 100%;
+  height: 280px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -401,16 +444,4 @@ position: relative;
 
 .fa-paper-plane {
   color: white;
-}
-
-.desc-button-container {
-  display: flex;
-  width: 60rem;
-  // justify-content: space-between;
-}
-
-.pickup-info-container {
-  display: flex;
-  width: 95vw;
-  // justify-content: space-between;
 }

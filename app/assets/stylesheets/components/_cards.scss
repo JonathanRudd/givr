@@ -274,14 +274,36 @@ position: relative;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.two-cards-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
 .wide-card-giveaway {
+  display: grid;
+  grid-template-columns: 35% 35% 25%;
   padding: 16px;
   height: 25.2rem;
-  width: 95vw;
-  display: flex;
-  margin-top: 18px;
-  margin-left: 18px;
-  margin-right: 18px;
+  margin: 18px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+
+.item-description-card {
+  padding: 16px;
+}
+
+.user-interactions {
+  padding: 16px;
+}
+
+.message-card {
+  flex-grow: 1;
+  padding: 16px;
+  margin: 18px 18px 18px 0;
+  height: 25.2rem;
   border-radius: 5px;
   background-color: white;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
@@ -306,15 +328,18 @@ position: relative;
 }
 
 .message-container-items {
-  width: 600px;
+  .textarea-item {
+  width: 325px;
+  height: 235px;
+  }
 }
 
 .interior-card {
   width: 30rem;
 }
 
-.interior-card-giveaways {
-  width: 20rem;
+.interior-card-giveaway {
+  width: 200px;
 }
 
 .interior-description-card {
@@ -323,14 +348,18 @@ position: relative;
 
 .interior-description-card-pickup {
   width: 100rem;
-  margin-left: 16px;
+  // margin-left: 16px;
   height: 100%;
 }
 
-.interior-description-card-item {
-  width: 40rem;
-  margin-left: 16px;
-  margin-right: 16px;
+.user-interactions {
+  width: 15rem;
+  .pickup-tag {
+    display:table-cell;
+    padding: 8px;
+    background-color: rgb(160, 255, 160);
+    border-radius: 8px;
+  }
 }
 
 .edit-delete {
@@ -339,7 +368,8 @@ position: relative;
   margin-top: 12px;
 
   .btn{
-    width: 112px;
+    width: 96px;
+    height: 36px;
   }
 }
 

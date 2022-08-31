@@ -1,106 +1,121 @@
 <div class="tabcontent">
-  <% @my_items.each do |item| %>
-    <div class="wide-card-giveaway"><%# wide-card %>
+  <div class="two-cards-container">
+    <% @my_items.each do |item| %>
 
-      <div class="interior-card-giveaway"><%# Top left of card %>
-        <div class="item"> <%# item card %>
-          <%= link_to "", item_url(item), class: "nav-link" %>
-          <% if item.images.attached?%>
-            <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
-          <% else %>
-            <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
-          <% end %>
-          <div class="item-overlay">
-            <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
-            <div class="item-body">
-              <ul>
-                <li><p><strong>Description</strong></p></li>
-                <li id="item-desc"><p><%= item.description.truncate(50) %></p></li>
-                <br>
-                <li><p><strong>Tags</strong></p></li>
-                <li id="item-desc"><p><%= item.tag_list %></p></li>
-              </ul>
+      <div class="wide-card-giveaway"><%# wide-card %>
+
+        <div class="interior-card-giveaway"><%# Top left of card %>
+          <div class="item"> <%# item card %>
+            <%= link_to "", item_url(item), class: "nav-link" %>
+            <% if item.images.attached?%>
+              <img src="<%= cl_image_path(item.images.first.key) %>" alt="image">
+            <% else %>
+              <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
+            <% end %>
+            <div>
+              <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
+              <div class="item-body">
+                <ul>
+                  <li><p><strong>Description</strong></p></li>
+                  <li id="item-desc"><p><%= item.description.truncate(50) %></p></li>
+                  <br>
+                  <li><p><strong>Tags</strong></p></li>
+                  <li id="item-desc"><p><%= item.tag_list %></p></li>
+                </ul>
+              </div>
             </div>
+          </div> <%# item card %>
+          <div class="edit-delete">
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-outline-warning" %>
+            <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
           </div>
-        </div> <%# item card %>
-        <div class="edit-delete">
-          <%= link_to 'Edit', edit_item_path(item), class: "btn btn-outline-warning" %>
-          <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
-        </div>
-      </div>
-
-      <div class="interior-description-card-item"> <%# description container %>
-        <div class="flex-item">
-
         </div>
 
+
+          <div class="item-description-card">
+            <strong><h5><%= item.title %></h5></strong>
+            <br>
+            <p><i class="fa fa-align-left"></i> <%= item.description %></p>
+            <p><i class="fa fa-map-pin"></i> <%= item.user.address %></p>
+            <p><i class="fa-solid fa-hourglass-end"></i> <%= item.timeframe %></p>
+            <p><i class="fa fa-tags" aria-hidden="true"></i> <%= item.tag_list %></p>
+          </div>
+
+          <div class="user-interactions"> <%# description container %>
+            <strong><h5>Item requests</h5></strong>
+            <br>
+            <% if item.pickup.present? %>
+              <p><%= item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email %> sent you a request for this item</p>
+              <% if item.pickup.pending? %>
+                <div class="d-flex">
+                  <%= simple_form_for item.pickup do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                    <%= f.submit 'Accept', class: 'btn btn-info' %>
+                  <% end %>
+
+                  <%= simple_form_for item.pickup do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                    <%= f.submit 'Reject', class: 'btn btn-light' %>
+                  <% end %>
+                </div>
+              <% end %>
+              <%# error starts from somewhere between here %>
+              <% if item.pickup.accepted? %>
+                <p><div class='pickup-tag'>&nbsp<%= item.pickup.status %></div></p>
+                <div class="d-flex">
+                  <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
+                    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
+                    <%= f.submit 'Rate', class: 'btn btn-info' %>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <% if item.pickup.rejected? %>
+                <p class='pickup-tag'><%= item.pickup.status %></p>
+              <% end %>
+              <% if item.pickup.cancelled? %>
+                <p class='pickup-tag'><%= item.pickup.status %></p>
+              <% end %>
+            <% end %>
+          </div> <%# description container %>
+
+
+
+      </div> <%# wide-card %>
+
+      <div class="message-card">
+        <p>Messages for <%= item.title %></p>
         <div class="pickup-info-container"> <%# messages container %>
           <div class="message-container-items">
             <% if item.pickup %>
-              <div class="textarea-item">
-                <div class="note d-flex">
-                  <span class="d-flex">
-                    <%= image_tag item.pickup.user.avatar.present? ? item.pickup.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email}" %>
-                    <span>
-                      <p class="message-content"><%= item.pickup.note %></p>
-                      <p class="message-time"><%= item.pickup.created_at %></p>
-                    </span>
-                  </span>
-                </div>
-                <% item.pickup.messages.each do |message| %>
-                  <div class="message">
+              <div class="textarea-item" data-controller="bottom-scroll">
+                  <div class="note d-flex">
                     <span class="d-flex">
-                      <%= image_tag message.user.avatar.present? ? message.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.nickname.present? ? message.user.nickname : message.user.email}" %>
+                      <%= image_tag item.pickup.user.avatar.present? ? item.pickup.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email}" %>
                       <span>
-                        <p class="message-content"><%= message.content %></p>
-                        <p class="message-time"><%= message.created_at %></p>
+                        <p class="message-content"><%= item.pickup.note %></p>
+                        <p class="message-time"><%= item.pickup.created_at %></p>
                       </span>
                     </span>
                   </div>
-                <% end %>
+                  <% item.pickup.messages.each do |message| %>
+                    <div class="message">
+                      <span class="d-flex">
+                        <%= image_tag message.user.avatar.present? ? message.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.nickname.present? ? message.user.nickname : message.user.email}" %>
+                        <span>
+                          <p class="message-content"><%= message.content %></p>
+                          <p class="message-time"><%= message.created_at %></p>
+                        </span>
+                      </span>
+                    </div>
+                  <% end %>
               </div>
               <%= render 'messages/reply_form', pickup: item.pickup %>
             <% end %>
           </div>
         </div> <%# messages container %>
-      </div> <%# description container %>
+      </div>
 
-      <div class="pickup-info-container"> <%# The accept reject/message and button and rate,  %>
-        <% if item.pickup.present? %>
-          <p><%= item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email %> sent you a request for this item</p>
-          <% if item.pickup.pending? %>
-            <div class="d-flex">
-              <%= simple_form_for item.pickup do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                <%= f.submit 'Accept', class: 'btn btn-info' %>
-              <% end %>
-
-              <%= simple_form_for item.pickup do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                <%= f.submit 'Reject', class: 'btn btn-light' %>
-              <% end %>
-            </div>
-          <% end %>
-          <%# error starts from somewhere between here %>
-          <% if item.pickup.accepted? %>
-            <p class='pickup-tag'>&nbsp<%= item.pickup.status %></p>
-            <div class="d-flex">
-              <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
-                <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
-                <%= f.submit 'Rate', class: 'btn btn-info' %>
-              <% end %>
-            </div>
-          <% end %>
-
-          <% if item.pickup.rejected? %>
-            <p class='pickup-tag'><%= item.pickup.status %></p>
-          <% end %>
-          <% if item.pickup.cancelled? %>
-            <p class='pickup-tag'><%= item.pickup.status %></p>
-          <% end %>
-        <% end %>
-      </div><%# error ends somewhere here %>
-
-    </div> <%# wide-card %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

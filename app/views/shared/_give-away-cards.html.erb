@@ -26,60 +26,57 @@
             </div>
           </div> <%# item card %>
           <div class="edit-delete">
-            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-outline-warning" %>
-            <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+            <%= link_to 'Edit', edit_item_path(item), class: "edit" %>
+            <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
           </div>
         </div>
 
+        <div class="item-description-card">
+          <strong><h4><%= item.title %></h4></strong>
+          <br>
+          <p><i class="fa fa-align-left"></i> <%= item.description.truncate(130) %></p>
+          <p><i class="fa fa-map-pin"></i> <%= item.user.address %></p>
+          <p><i class="fa-solid fa-hourglass-end"></i> <%= item.timeframe %></p>
+          <p><i class="fa fa-tags" aria-hidden="true"></i> <%= item.tag_list %></p>
+        </div>
 
-          <div class="item-description-card">
-            <strong><h4><%= item.title %></h4></strong>
-            <br>
-            <p><i class="fa fa-align-left"></i> <%= item.description.truncate(150) %></p>
-            <p><i class="fa fa-map-pin"></i> <%= item.user.address %></p>
-            <p><i class="fa-solid fa-hourglass-end"></i> <%= item.timeframe %></p>
-            <p><i class="fa fa-tags" aria-hidden="true"></i> <%= item.tag_list %></p>
-          </div>
+        <div class="user-interactions"> <%# description container %>
+          <strong><h5>Item requests</h5></strong>
+          <br>
+          <% if item.pickup.present? %>
+            <strong><%= item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email %></strong><p> sent you a request for this item</p>
+            <% if item.pickup.pending? %>
+              <div class="accept-reject">
+                <%= simple_form_for item.pickup do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                  <%= f.submit 'Accept', class: 'accept' %>
+                <% end %>
 
-          <div class="user-interactions"> <%# description container %>
-            <strong><h5>Item requests</h5></strong>
-            <br>
-            <% if item.pickup.present? %>
-              <strong><%= item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email %></strong><p> sent you a request for this item</p>
-              <% if item.pickup.pending? %>
-                <div class="accept-reject">
-                  <%= simple_form_for item.pickup do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                    <%= f.submit 'Accept', class: 'accept' %>
-                  <% end %>
-
-                  <%= simple_form_for item.pickup do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                    <%= f.submit 'Reject', class: 'reject' %>
-                  <% end %>
-                </div>
-              <% end %>
-              <%# error starts from somewhere between here %>
-              <% if item.pickup.accepted? %>
-                <p><div class='pickup-tag'><%= item.pickup.status %></div></p>
-                <div class="d-flex">
-                  <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
-                    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
-                    <%= f.submit 'Rate', class: 'btn btn-info' %>
-                  <% end %>
-                </div>
-              <% end %>
-
-              <% if item.pickup.rejected? %>
-                <p class='pickup-tag'><%= item.pickup.status %></p>
-              <% end %>
-              <% if item.pickup.cancelled? %>
-                <p class='pickup-tag'><%= item.pickup.status %></p>
-              <% end %>
+                <%= simple_form_for item.pickup do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                  <%= f.submit 'Reject', class: 'reject' %>
+                <% end %>
+              </div>
             <% end %>
-          </div> <%# description container %>
 
+            <% if item.pickup.accepted? %>
+              <p><div class='pickup-tag accepted-tag'><i class="fa fa-check" aria-hidden="true"></i> <%= item.pickup.status %></div></p>
+              <div class="d-flex">
+                <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
+                  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
+                  <%= f.submit 'Rate', class: 'rate' %>
+                <% end %>
+              </div>
+            <% end %>
 
+            <% if item.pickup.rejected? %>
+              <p class='pickup-tag rejected-tag'><i class="fa fa-times" aria-hidden="true"></i> <%= item.pickup.status %></p>
+            <% end %>
+            <% if item.pickup.cancelled? %>
+              <p class='pickup-tag'><%= item.pickup.status %></p>
+            <% end %>
+          <% end %>
+        </div> <%# description container %>
 
       </div> <%# wide-card %>
 

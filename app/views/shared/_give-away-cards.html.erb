@@ -99,7 +99,11 @@
                   <% item.pickup.messages.each do |message| %>
                     <div class="message">
                       <span class="d-flex">
-                        <%= image_tag message.user.avatar.present? ? message.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.nickname.present? ? message.user.nickname : message.user.email}" %>
+                        <% if message.user.avatar.attached? %>
+                          <%= cl_image_tag message.user.avatar.key, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.nickname.present? ? message.user.nickname : message.user.email}" %><%= image_tag message.user.avatar.present? ? message.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.nickname.present? ? message.user.nickname : message.user.email}" %>
+                        <% else %>
+                          <%= image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.nickname.present? ? message.user.nickname : message.user.email}" %>
+                        <% end %>
                         <span>
                           <p class="message-content"><%= message.content %></p>
                           <p class="message-time"><%= message.created_at %></p>

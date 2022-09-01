@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
 require 'open-uri'
 
@@ -23,7 +15,7 @@ Message.destroy_all
 puts "creating Keanu and 5 other users"
 
 User.create!(
-  nickname: "Keany",
+  nickname: "Keanu",
   email: "Keanu@gmail.com",
   password: "123456",
   longitude: 139.7082,
@@ -78,62 +70,67 @@ User.create!(
 #   )
 # end
 
-seedtags = ["kitchen", "apparel", "tools", "home entertainment", "games", "furniture", "sports"]
+# seedtags = ["kitchen", "apparel", "tools", "home entertainment", "games", "furniture", "sports"]
 
-puts "creating Keanus surfboard and 20 other items"
+# puts "creating Keanus surfboard and 20 other items"
 
-surf = Item.create!(
-  user_id: User.first.id,
-  title: "Surfboard",
-  description: "2nd hand surfboard, still looks great",
-  timeframe: "Whoa, whenever"
-)
-surf.tag_list.add("sports equipment")
-surf.save!
+# surf = Item.create!(
+#   user_id: User.first.id,
+#   title: "Surfboard",
+#   description: "2nd hand surfboard, still looks great",
+#   timeframe: "Whoa, whenever"
+# )
+# surf.tag_list.add("sports equipment")
+# surf.save!
 
-20.times do
-  user_ids = User.all.pluck(:id)
+# 20.times do
+#   user_ids = User.all.pluck(:id)
 
-  itemseed = Item.create!(
-    user_id: user_ids.sample,
-    title: "#{Faker::Appliance.brand} #{Faker::Appliance.equipment}",
-    description: "This #{Faker::Hacker.adjective} is great for #{Faker::Hobby.activity}",
-    timeframe: "Free on Weekends"
-  )
-  itemseed.tag_list.add(seedtags.sample(2))
-  itemseed.save!
-end
+#   itemseed = Item.create!(
+#     user_id: user_ids.sample,
+#     title: "#{Faker::Appliance.brand} #{Faker::Appliance.equipment}",
+#     description: "This #{Faker::Hacker.adjective} is great for #{Faker::Hobby.activity}",
+#     timeframe: "Free on Weekends"
+#   )
+#   itemseed.tag_list.add(seedtags.sample(2))
+#   itemseed.save!
+# end
 
-# Quality item seeds...
-
-file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg')
-item-a = Item.create!(
-  user: User.first.id,
+# Item a
+file = URI.open('https://upload.wikimedia.org/wikipedia/commons/2/2c/FixedGearBicycle.jpg')
+item_a = Item.new(
+  user: User.find(1),
   title: "Bicycle",
-  description: "Stylish purple bike that will get you to the top! Framesize 49cm. Professionally checked and serviced by a top-level bike mechanic, incl. 3 months technical guarantee.",
-  timeframe: "Weekdays morning"
+  description: "Stylish fixie bike that will get you to the top! Framesize 49cm. Professionally checked and serviced by a top-level bike mechanic, including a 3 months technical guarantee.",
+  timeframe: "Weekday mornings"
 )
-item-a.tag_list.add("sports equipment")
-f.images.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-item-a.save!
+item_a.tag_list.add("sports equipment")
+item_a.images.attach(io: file, filename: 'bicycle.png', content_type: 'image/png')
+item_a.save!
 
-# item-b = Item.create!(
-#   user: User.first.id,
-#   title: "Snowboard",
-#   description: "Preowned but in great condition. As used item it's a minor chip and scratches but thes don't compromise the performance. Snowboard w Xylo bindings 138 cm.",
-#   timeframe: "Only on weekends morning"
-# )
-# item-b.tag_list.add("sports equipment")
-# item-b.save!
+# Item b
+file = URI.open('https://upload.wikimedia.org/wikipedia/commons/a/a9/F2_Eliminator_Snowboard_Freecarve_Boardercross_163_cm.jpeg')
+item_b = Item.new(
+  user: User.find(2),
+  title: "Snowboard",
+  description: "Still in great condition. As a used item it has some minor chips and scratches, but it doesn't compromise the performance. Snowboard is 163 cm.",
+  timeframe: "Weekend mornings"
+)
+item_b.tag_list.add("sports equipment")
+item_b.images.attach(io: file, filename: 'snowboard.png', content_type: 'image/png')
+item_b.save!
 
-# item-c = Item.create!(
-#   user: User.first.id,
-#   title: "Golf Club",
-#   description: "TAYLORMADE R15 Driver, LOFT: 12°, SHAFT: Fujikura Speeder 57 Evolution Graphite Stiff, Right Hand, VERY NICE CONDITION!!! NO SCRATCHES, DENTS, or PAINT CHIPS",
-#   timeframe: "Preferred weekdays after 8PM"
-# )
-# item-c.tag_list.add("sports equipment")
-# item-c.save!
+# Item c
+file = URI.open('https://upload.wikimedia.org/wikipedia/commons/b/b8/Golf_club%2C_Callawax_X-20_4_iron_-_III.jpg')
+item_c = Item.new(
+  user: User.find(3),
+  title: "Golf Club",
+  description: "R15 Driver, LOFT: 12°, SHAFT: Fujikura Speeder 57 Evolution Graphite Stiff. It's right handed and still in great condition except for a few small dents and scratches.",
+  timeframe: "Weekdays after 8PM"
+)
+item_c.tag_list.add("sports equipment")
+item_c.images.attach(io: file, filename: 'golfclub.png', content_type: 'image/png')
+item_c.save!
 
 # item-d = Item.create!(
 #   user: User.first.id,
@@ -153,17 +150,16 @@ item-a.save!
 # item-e.tag_list.add("sports equipment")
 # item-e.save!
 
-file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg')
-f = Item.new(
-  user: User.find{1},
-  title: "Nintendo set",
-  description: "This is a classically styled vintage, possibly antique piece. Solid wood throughout with elegantly turned legs.",
-  timeframe: "Weekday evenings"
-)
-f.tag_list.add("furniture", "antiques")
-f.images.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-f.save!
-
+# file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg')
+# f = Item.new(
+#   user: User.find{},
+#   title: "Nintendo set",
+#   description: "This is a classically styled vintage, possibly antique piece. Solid wood throughout with elegantly turned legs.",
+#   timeframe: "Weekday evenings"
+# )
+# f.tag_list.add("furniture", "antiques")
+# f.images.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+# f.save!
 
 # item-g = Item.create!(
 #   user: User.first.id,

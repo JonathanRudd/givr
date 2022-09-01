@@ -29,7 +29,7 @@
         </div>
 
         <div class="item-description-card">
-          <strong><h4><%= item.title %></h4></strong>
+          <strong style="text-align:center"><h4><%= item.title %></h4></strong>
           <br>
           <p><i class="fa fa-align-left"></i> <%= item.description.truncate(145) %></p>
           <p><i class="fa fa-map-pin"></i> <%= item.user.address %></p>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="user-interactions"> <%# description container %>
-          <strong><h5>Item requests</h5></strong>
+          <strong style="text-align:center"><h5>Item requests</h5></strong>
           <br>
           <% if item.pickup.present? %>
             <strong><%= item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email %></strong><p> sent you a request for this item</p>
@@ -78,7 +78,7 @@
       </div> <%# wide-card %>
 
       <div class="message-card">
-        <p>Messages for <%= item.title %></p>
+        <p style="text-align:center"><i class="fa fa-comments" aria-hidden="true"></i> <%= item.title %></p>
         <div class="pickup-info-container"> <%# messages container %>
           <div class="message-container-items">
             <% if item.pickup %>

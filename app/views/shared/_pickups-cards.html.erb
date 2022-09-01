@@ -27,9 +27,9 @@
       <div class="message-container">
         <% if pickup.pending? %>
           <div class="d-flex justify-content-between mb-2">
-            <p class='pickup-tag'><strong>Status: </strong><%= pickup.status %></p>
+            <h5 class='pickup-tag'><i class="fa fa-info-circle" aria-hidden="true"></i> <%= pickup.status %></h5>
             <%= simple_form_for pickup, method: :delete do |f| %>
-            <%= f.submit 'Cancel', class: "flex-end btn btn-outline-danger" %>
+            <%= f.submit 'Cancel', class: "flex-end cancel-button" %>
           <% end %>
           </div>
         <% end %>

@@ -59,10 +59,10 @@
             <% if item.pickup.accepted? %>
               <p><div class='pickup-tag accepted-tag'><i class="fa fa-check" aria-hidden="true"></i> <%= item.pickup.status %></div></p>
               <div class="d-flex">
-                <%= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
-                  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
-                  <%= f.submit 'Rate', class: 'rate' %>
-                <% end %>
+                <%#= simple_form_for Review.new, method: :post, url: item_reviews_path(item.id) do |f| %>
+                  <%#= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
+                  <%#= f.submit 'Rate', class: 'rate' %>
+                <%# end %>
               </div>
             <% end %>
 
@@ -81,11 +81,15 @@
         <p style="text-align:center"><i class="fa fa-comments" aria-hidden="true"></i> <%= item.title %></p>
         <div class="pickup-info-container"> <%# messages container %>
           <div class="message-container-items">
-            <% if item.pickup %>
+            <% if item.pickup.present? %>
               <div class="textarea-item" data-controller="bottom-scroll">
                   <div class="note d-flex">
                     <span class="d-flex">
-                      <%= image_tag item.pickup.user.avatar.present? ? item.pickup.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email}" %>
+                    <% if item.pickup.user.avatar.attached? %>
+                      <%= cl_image_tag item.pickup.user.avatar.key, class: "givr-avatar", style: "margin-right: 8px;", title:"#{item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email}" %>
+                    <% else %>
+                      <%= image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;", title:"#{item.pickup.user.nickname.present? ? item.pickup.user.nickname : item.pickup.user.email}" %>
+                    <% end %>
                       <span>
                         <p class="message-content"><%= item.pickup.note %></p>
                         <p class="message-time"><%= item.pickup.created_at %></p>

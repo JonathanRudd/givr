@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_27_073805) do
+ActiveRecord::Schema.define(version: 2022_08_30_122646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 2022_08_27_073805) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "average_caches", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable"
+    t.index ["rateable_type"], name: "index_average_caches_on_rateable_type"
+    t.index ["rater_id", "rateable_id"], name: "index_average_caches_on_rater_id_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -87,6 +100,16 @@ ActiveRecord::Schema.define(version: 2022_08_27_073805) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rateable_id", "rateable_type"], name: "index_overall_averages_on_rateable_id_and_rateable_type"
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable"
+  end
+
   create_table "pickups", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -100,13 +123,30 @@ ActiveRecord::Schema.define(version: 2022_08_27_073805) do
     t.index ["user_id"], name: "index_pickups_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.string "content"
-    t.integer "rating"
-    t.bigint "user_id", null: false
+  create_table "rates", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["rateable_id", "rateable_type"], name: "rate_rateable_id"
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+    t.index ["rater_id"], name: "rate_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.bigint "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -165,6 +205,5 @@ ActiveRecord::Schema.define(version: 2022_08_27_073805) do
   add_foreign_key "messages", "users"
   add_foreign_key "pickups", "items"
   add_foreign_key "pickups", "users"
-  add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "tags"
 end

@@ -18,7 +18,7 @@ class Pickup < ApplicationRecord
   end
 
   def cleanup_notifications
-    notifications_as_pickup.destroy.all
+    notifications_as_pickup.each { |notif| notif.destroy}
   end
 
 end

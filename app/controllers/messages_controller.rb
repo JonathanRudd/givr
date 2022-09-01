@@ -7,9 +7,9 @@ class MessagesController < ApplicationController
     message.pickup = pickup
     authorize message
     if message.save
-      redirect_to dashboard_path, notice: 'Messages Replied'
+      redirect_to dashboard_path(tab: 'pickup'), notice: 'Messages Replied'
     else
-      redirect_to dashboard_path, notice: 'Messages Reply Failed!!!!'
+      redirect_to dashboard_path(tab: 'pickup'), notice: 'Messages Reply Failed!!!!'
     end
   end
 

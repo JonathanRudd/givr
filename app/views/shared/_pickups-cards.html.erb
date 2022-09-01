@@ -1,8 +1,7 @@
 <% @my_pickups.each do |pickup| %>
   <div class="wide-card-pickup"> <%# wide-card %>
-
-    <div class="interior-card"> <%# item-card %>
-      <div class="item">
+    <div class="interior-card">
+      <div class="item"> <%# item-card %>
         <%= link_to "", pickup_url(pickup), class: "nav-link" %>
         <% if pickup.item.images.attached?%>
           <img src="<%= cl_image_path(pickup.item.images.first.key) %>" alt="image">
@@ -28,22 +27,18 @@
       <div class="message-container">
         <% if pickup.pending? %>
           <div class="d-flex justify-content-between mb-2">
-            <p class='pickup-tag'><strong>Status: </strong><%= pickup.status %></p>
+            <h5 class='pickup-tag'><i class="fa fa-info-circle" aria-hidden="true"></i> <%= pickup.status %></h5>
             <%= simple_form_for pickup, method: :delete do |f| %>
-            <%= f.submit 'Cancel', class: "flex-end btn btn-outline-danger" %>
+            <%= f.submit 'Cancel', class: "flex-end cancel-button" %>
           <% end %>
           </div>
         <% end %>
 
 
-          <div class="textarea-pickup"><%# This is the comment view and reply area %>
+          <div class="textarea-pickup" data-controller="bottom-scroll"><%# This is the comment view and reply area %>
             <div class="note d-flex">
               <span class="d-flex">
-                <% if pickup.user.avatar.attached? %>
-                  <%= image_tag pickup.user.avatar, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
-                <% else %>
-                <%= image_tag "avatar.png", class: "givr-avatar", style: "margin-right: 8px;" %>
-                <% end %>
+                <%= image_tag pickup.user.avatar.present? ? pickup.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
                 <span>
                   <p class="message-content"><%= pickup.note || "" %></p>
                   <p class="message-time"><%= pickup.created_at %></p>
@@ -53,7 +48,7 @@
             <% pickup.messages.each do |message| %>
               <div class="message">
                 <span class="d-flex">
-                  <%= image_tag message.user.avatar, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
+                  <%= image_tag message.user.avatar.present? ? message.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
                   <span>
                     <p class="message-content"><%= message.content %></p>
                     <p class="message-time"><%= message.created_at %></p>

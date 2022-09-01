@@ -243,7 +243,6 @@ position: relative;
   min-height: 75vh;
 }
 
-
 // wide cards for give away on dashboard
 
 .wide-grid {
@@ -274,14 +273,56 @@ position: relative;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.two-cards-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
 .wide-card-giveaway {
+  display: grid;
+  grid-template-columns: 35% 35% 25%;
   padding: 16px;
-  height: 22rem;
-  width: 95vw;
-  display: flex;
-  margin-top: 18px;
-  margin-left: 18px;
-  margin-right: 18px;
+  height: 25.2rem;
+  margin: 18px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.item-description-card {
+  padding: 16px;
+  background-color: rgb(244,244,244);
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.user-interactions {
+  padding: 16px;
+  width: 15rem;
+  background-color: rgb(244,244,244);
+  border-radius: 5px;
+  margin-left: 8px;
+  .accepted-tag{
+    display:table-cell;
+    padding: 8px;
+    background-color: rgb(12,190,131);
+    border-radius: 8px;
+    color: white;
+  }
+  .rejected-tag{
+    display:table-cell;
+    padding: 8px;
+    background-color: rgb(231,101,101);
+    border-radius: 8px;
+    color: white;
+  }
+}
+
+.message-card {
+  flex-grow: 1;
+  padding: 16px;
+  margin: 18px 18px 18px 0;
+  height: 25.2rem;
   border-radius: 5px;
   background-color: white;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
@@ -294,17 +335,30 @@ position: relative;
   margin-left: 18px;
   margin-right: 18px;
   border-radius: 5px;
-  background-color: black;
+  background-color: rgb(190, 190, 190);
   color: white;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.message-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-container-items {
+  .textarea-item {
+  width: 325px;
+  height: 235px;
+  }
 }
 
 .interior-card {
   width: 30rem;
 }
 
-.interior-card-giveaways {
-  width: 20rem;
+.interior-card-giveaway {
+  width: 250px;
 }
 
 .interior-description-card {
@@ -313,8 +367,93 @@ position: relative;
 
 .interior-description-card-pickup {
   width: 100rem;
-  margin-left: 16px;
+  // margin-left: 16px;
+  height: 100%;
 }
+
+.edit-delete {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 12px;
+
+  .edit{
+    background-color: rgb(255,198,90);
+    margin-right: 4px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 8px;
+    width: 96px;
+    height: 36px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+
+  .delete {
+    background-color: rgb(231,101,101);
+    margin-right: 4px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 8px;
+    width: 96px;
+    height: 36px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+}
+
+.delete:hover {
+  background-color: rgb(239, 136, 136);
+}
+
+.edit:hover {
+  background-color: rgb(255, 211, 130);
+}
+
+.accept-reject {
+  display: flex;
+  justify-content: space-around;
+  margin: 8px;
+  .accept {
+    background-color: rgb(12,190,131);
+    margin-right: 4px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 8px;
+    width: 96px;
+    height: 36px;
+  }
+  .accept:hover{
+    background-color: rgb(116, 226, 176);
+  }
+  .reject {
+    background-color: rgb(231, 101, 101);
+    margin-left: 4px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 8px;
+    width: 96px;
+    height: 36px;
+  }
+  .reject:hover{
+    background-color: rgb(239, 136, 136);
+    }
+}
+
+.cancel-button {
+  background-color: rgb(231, 101, 101);
+    margin-left: 4px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 8px;
+    width: 96px;
+    height: 36px;
+  }
+  .cancel-button:hover {
+    background-color: rgb(239, 136, 136);
+}
+
 .textarea {
   overflow-y: scroll;
   width: 100%;
@@ -331,6 +470,21 @@ position: relative;
   overflow-y: scroll;
   width: 100%;
   height: 180px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  display: inline-block;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.textarea-item {
+  overflow-y: scroll;
+  width: 100%;
+  height: 280px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -391,6 +545,19 @@ position: relative;
   background-color: rgb(0,255,170);
 }
 
+.rate {
+  background-color: rgb(255,198,90);
+  margin-right: 4px;
+  border-style: none;
+  border-radius: 4px;
+  padding: 8px;
+  width: 96px;
+  height: 36px;
+}
+.rate:hover {
+  background-color: rgb(255, 211, 130);
+  }
+
 .user-message-field {
   textarea {
     overflow-y: scroll;
@@ -398,19 +565,6 @@ position: relative;
   }
 }
 
-
 .fa-paper-plane {
   color: white;
-}
-
-.desc-button-container {
-  display: flex;
-  width: 60rem;
-  justify-content: space-between;
-}
-
-.pickup-info-container {
-  display: flex;
-  width: 95vw;
-  justify-content: space-between;
 }

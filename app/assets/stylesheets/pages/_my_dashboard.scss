@@ -25,14 +25,16 @@ body {
   padding: 0;
   border-bottom: 1px solid rgb(89,176,137);
   border-bottom-width: medium;
-  margin-top: -48px;
 }
 
 .tab {
   border-radius: 16px 16px 0 0;
   cursor: pointer;
   padding: 10px;
-  background-color: rgb(230, 230, 230);
+  width: 48%;
+  text-align: center;
+  color: grey;
+  background-color: rgb(226, 225, 225);
   position: relative;
   border: 3px solid rgb(89,176,137);
   margin-bottom: -3px;
@@ -41,10 +43,13 @@ body {
 .tab.active {
   background-color: rgb(247,246,246);
   border-bottom: none;
+  color: black;
+  font-size: larger;
 }
 
 .tab:hover {
   background-color: rgb(89,176,137);
+
 }
 
 .tab-content {

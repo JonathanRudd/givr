@@ -5,4 +5,20 @@ class Pickup < ApplicationRecord
   # enum time: { Before8: 1, Morning: 1, Afternoon: 2, Evening: 3, After8: 4 }
   enum status: { pending: 0, accepted: 1, rejected: 2, cancelled: 3}
   has_many :messages, dependent: :destroy
+
+
+  after_create_commit :notify_recipient
+  before_destroy :cleanup_notifications
+  has_noticed_notifications model_name: 'Notification'
+
+  private
+
+  def notify_recipient
+    PickupNotification.with(pickup: self, item: item).deliver_later(item.user)
+  end
+
+  def cleanup_notifications
+    notifications_as_pickup.each { |notif| notif.destroy}
+  end
+
 end

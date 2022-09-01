@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @items = policy_scope(Item).includes(:tags, images_attachments: :blob, user: :reviews)
+    @items = policy_scope(Item).includes(:tags, images_attachments: :blob)
+    # @items = policy_scope(Item).includes(:tags, images_attachments: :blob, user: :reviews)
     @items = @items.search_by_title(params[:title]) if params[:title].present?
     @items = @items.search_by_address(params[:address]) if params[:address].present?
     @items = @items.tagged_with(params[:tag_list]) if params[:tag_list]&.second.present?
@@ -39,6 +40,8 @@ class ItemsController < ApplicationController
     # @all_markers = @markers + @recommendation_markers
     @item = Item.find(params[:id])
     @comment = Comment.new
+
+    mark_notifications_as_read
   end
 
   def new
@@ -91,5 +94,12 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:user_id, :title, :description, :timeframe, images: [], tag_list: [])
+  end
+
+  def mark_notifications_as_read
+    if current_user
+      notifications_to_mark_as_read = @item.notifications_as_item.where(recipient: current_user)
+      notifications_to_mark_as_read.update_all(read_at: Time.zone.now)
+    end
   end
 end

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :pickups_as_owner, through: :items, source: :pickups
   has_many :pickups
   has_many :comments, dependent: :destroy
+
   ratyrate_rateable "friendliness"
   ratyrate_rater
   # has_many :reviews, dependent: :destroy
@@ -19,4 +20,7 @@ class User < ApplicationRecord
     ratings = self.reviews.pluck(:rating).compact
     ratings.sum / ratings.size
   end
+  # for notification
+  has_many :notifications, as: :recipient, dependent: :destroy
+
 end

@@ -96,9 +96,19 @@
                       </span>
                     </span>
                   </div>
-
+                  <% item.pickup.messages.each do |message| %>
+                    <div class="message">
+                      <span class="d-flex">
+                        <%= image_tag message.user.avatar.present? ? message.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{message.user.nickname.present? ? message.user.nickname : message.user.email}" %>
+                        <span>
+                          <p class="message-content"><%= message.content %></p>
+                          <p class="message-time"><%= message.created_at %></p>
+                        </span>
+                      </span>
+                    </div>
+                  <% end %>
               </div>
-              <%#= render 'messages/reply_form', pickup: item.pickup %>
+              <%= render 'messages/reply_form', pickup: item.pickup %>
             <% end %>
           </div>
         </div> <%# messages container %>

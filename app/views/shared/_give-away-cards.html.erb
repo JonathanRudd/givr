@@ -69,7 +69,7 @@
             <% if item.pickup.accepted? %>
               <p class='pickup-tag'><%= item.pickup.status %></p>
               <div class="d-flex">
-                <%= rating_for item.pickup.user, 'friendliness' %>
+                <%= rating_for item.pickup.user, 'friendliness', class: 'd-flex' %>
               </div>
             <% end %>
             <% if item.pickup.rejected? %>

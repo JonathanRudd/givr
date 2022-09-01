@@ -3,7 +3,6 @@
     <% @my_items.each do |item| %>
 
       <div class="wide-card-giveaway"><%# wide-card %>
-
         <div class="interior-card-giveaway"><%# Top left of card %>
           <div class="item"> <%# item card %>
             <%= link_to "", item_url(item), class: "nav-link" %>
@@ -12,8 +11,6 @@
             <% else %>
               <%= image_tag unsplash_image_url(tags: item.title), class: "img" %>
             <% end %>
-            <div>
-              <h5  id="person1" aria-hidden="true"><%= item.title %></h5>
               <div class="item-body">
                 <ul>
                   <li><p><strong>Description</strong></p></li>
@@ -23,7 +20,7 @@
                   <li id="item-desc"><p><%= item.tag_list %></p></li>
                 </ul>
               </div>
-            </div>
+
           </div> <%# item card %>
           <div class="edit-delete">
             <%= link_to 'Edit', edit_item_path(item), class: "edit" %>
@@ -34,7 +31,7 @@
         <div class="item-description-card">
           <strong><h4><%= item.title %></h4></strong>
           <br>
-          <p><i class="fa fa-align-left"></i> <%= item.description.truncate(130) %></p>
+          <p><i class="fa fa-align-left"></i> <%= item.description.truncate(145) %></p>
           <p><i class="fa fa-map-pin"></i> <%= item.user.address %></p>
           <p><i class="fa-solid fa-hourglass-end"></i> <%= item.timeframe %></p>
           <p><i class="fa fa-tags" aria-hidden="true"></i> <%= item.tag_list %></p>

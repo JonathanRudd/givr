@@ -12,7 +12,7 @@
 }
 
 .item {
-  width: 256px;
+  width: 100%;
   border-radius: 4px;
   position: relative;
   height: 20rem;
@@ -279,8 +279,8 @@ position: relative;
 }
 
 .wide-card-giveaway {
-  display: grid;
-  grid-template-columns: 35% 35% 25%;
+  display: flex;
+  grid-template-columns: 30% 30% 30%;
   padding: 16px;
   height: 25.2rem;
   margin: 18px;
@@ -294,11 +294,13 @@ position: relative;
   background-color: rgb(244,244,244);
   border-radius: 5px;
   margin-right: 8px;
+  margin-left: 16px;
+  width: 100%;
 }
 
 .user-interactions {
   padding: 16px;
-  width: 15rem;
+  width: 100%;
   background-color: rgb(244,244,244);
   border-radius: 5px;
   margin-left: 8px;
@@ -344,11 +346,12 @@ position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin-left: 16px;
 }
 
 .message-container-items {
   .textarea-item {
-  width: 325px;
+  width: 100%;
   height: 235px;
   }
 }
@@ -358,7 +361,7 @@ position: relative;
 }
 
 .interior-card-giveaway {
-  width: 250px;
+  width: 100%;
 }
 
 .interior-description-card {

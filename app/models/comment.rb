@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   validates :question, presence: true
   
   has_noticed_notifications model_name: 'Notification'
-  has_many :notificationS, through: :user, dependent: :destroy
+  has_many :notifications, through: :user, dependent: :destroy
 
   after_create_commit :notify_recipient
   before_destroy :cleanup_notifications
@@ -19,6 +19,6 @@ class Comment < ApplicationRecord
   end
 
   def cleanup_notifications
-    notifications_as_comment.destroy.all
+    notifications_as_comment.each {|notif| notif.destroy}
   end
 end

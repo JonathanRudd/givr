@@ -40,7 +40,7 @@
               <span class="d-flex">
                 <%= image_tag pickup.user.avatar.present? ? pickup.user.avatar : avatar.png, class: "givr-avatar", style: "margin-right: 8px;", title:"#{pickup.user.nickname.present? ? pickup.user.nickname : pickup.user.email}" %>
                 <span>
-                  <p class="message-content"><%= pickup.note %></p>
+                  <p class="message-content"><%= pickup.note || "" %></p>
                   <p class="message-time"><%= pickup.created_at %></p>
                 </span>
               </span>

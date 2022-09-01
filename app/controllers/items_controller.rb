@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @items = policy_scope(Item).includes(:tags, images_attachments: :blob, user: :reviews)
+    @items = policy_scope(Item).includes(:tags, images_attachments: :blob)
+    # @items = policy_scope(Item).includes(:tags, images_attachments: :blob, user: :reviews)
     @items = @items.search_by_title(params[:title]) if params[:title].present?
     @items = @items.search_by_address(params[:address]) if params[:address].present?
     @items = @items.tagged_with(params[:tag_list]) if params[:tag_list]&.second.present?

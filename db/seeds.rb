@@ -9,6 +9,10 @@
 require 'faker'
 require 'open-uri'
 
+puts "Destroying all Review"
+Review.destroy_all
+puts "Destroying all Notifications"
+Notification.destroy_all
 puts "Destroying all pickups"
 Pickup.destroy_all
 puts "Destroying all items"

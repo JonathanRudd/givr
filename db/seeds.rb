@@ -176,7 +176,7 @@ item_g = Item.new(
   description: "Vintage condition and a perfect statement in any room. Sad to be giving it away, will be happy to see it go to a cool new home!!",
   timeframe: "Weekends"
 )
-item_g.tag_list.add("furniture, retro")
+item_g.tag_list.add("furniture", "retro")
 item_g.images.attach(io: file, filename: 'couch.png', content_type: 'image/png')
 item_g.save!
 

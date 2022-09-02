@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
       # lets define a standard tag array and only pick out ones that match
 
       @item.save
-      redirect_to @item, notice: 'New item registered: are these tags okay? Edit them here if not'
+      redirect_to item_path(@item), notice: 'New item registered: are these tags okay? Edit them here if not'
     else
       render :new
     end

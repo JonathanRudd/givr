@@ -37,7 +37,7 @@ User.create!(
   password: "123456",
   longitude: 139.6397,
   latitude: 35.4569,
-  address: "Yokohama, MInatomirai"
+  address: "Yokohama, Minatomirai"
 )
 
 

@@ -1,5 +1,5 @@
 meta_product_name: "Givr"
 meta_title: "Givr - Give your items a second chance"
 meta_description: "Give things a second life with our advanced listing system"
-meta_image: "Givr.png" # should exist in `app/assets/images/`
+meta_image: "Givrog.png" # should exist in `app/assets/images/`
 twitter_account: "@Givr"   # required for Twitter Cards
